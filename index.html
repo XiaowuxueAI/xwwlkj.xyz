@@ -3,239 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI日记本 - AI工作流工具箱 | 电商·副业·内容创作·视频生成</title>
-    <meta name="description" content="不是又一个AI聊天，是帮你用AI真正赚钱的工作流工具箱。电商文案、带货脚本、副业方案、AI视频生成，一站式搞定。">
-    <link rel="stylesheet" href="style.css">
+    <title>AI日记本 - 真正能用的AI工具箱</title>
+    <meta name="description" content="选工具→填需求→一键复制提示词→去豆包/DeepSeek直接用。还有AI视频代做服务。">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐯</text></svg>">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#1a1a2e}
+        nav{background:#1a1a2e;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+        .logo{font-size:1.3rem;font-weight:800}.logo span{color:#e94560}
+        .nav-links{display:flex;gap:20px}
+        .nav-links a{color:white;opacity:.85;text-decoration:none;font-size:.9rem}
+        .nav-links a:hover{opacity:1;color:#e94560}
+
+        .hero{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:white}
+        .hero h1{font-size:2rem;margin-bottom:10px}
+        .hero p{opacity:.8;font-size:1rem;max-width:600px;margin:0 auto 20px}
+
+        .container{max-width:1000px;margin:0 auto;padding:20px}
+
+        /* Tools */
+        .tool-group{margin-bottom:30px}
+        .tool-group h2{font-size:1.4rem;margin-bottom:5px;padding-bottom:10px;border-bottom:2px solid #e94560}
+        .tool-group p.sub{color:#666;font-size:.9rem;margin-bottom:20px}
+        .tool-card{background:white;border-radius:12px;padding:20px;margin-bottom:12px;border:1px solid #eee;cursor:pointer;transition:.2s}
+        .tool-card:hover{border-color:#e94560;box-shadow:0 3px 12px rgba(233,69,96,.1)}
+        .tool-card h3{font-size:1.1rem;margin-bottom:5px}
+        .tool-card h3 .tag{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+        .tag-free{background:#d4edda;color:#155724}
+        .tag-pro{background:#fff3cd;color:#856404}
+        .tag-vip{background:#e94560;color:white}
+        .tool-card p.desc{color:#666;font-size:.85rem;margin-bottom:5px}
+        .tool-card .features{color:#888;font-size:.8rem}
+
+        /* Tool detail panel */
+        #tool-panel{display:none;background:white;border-radius:12px;padding:25px;margin-bottom:20px;border:2px solid #e94560;position:relative}
+        #tool-panel .close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:1.5rem;color:#999;background:none;border:none}
+        #tool-panel h3{font-size:1.2rem;margin-bottom:15px}
+        .form-group{margin-bottom:15px}
+        .form-group label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px;color:#333}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:.95rem;font-family:inherit}
+        .form-group textarea{min-height:80px;resize:vertical}
+        .btn-gen{background:#e94560;color:white;border:none;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;font-size:1rem;width:100%}
+        .btn-gen:hover{opacity:.9}
+        .btn-copy{background:#1a1a2e;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:.85rem;margin-top:10px}
+        .result-box{background:#f8f9fa;padding:15px;border-radius:8px;margin-top:15px;white-space:pre-wrap;font-size:.9rem;line-height:1.6;display:none;border-left:3px solid #e94560}
+
+        /* Video */
+        .video-section{background:white;border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid #eee}
+        .video-section h2{font-size:1.4rem;margin-bottom:15px;color:#1a1a2e}
+        .video-types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px}
+        .vtype{background:#f8f9fa;border-radius:8px;padding:15px;text-align:center}
+        .vtype h3{font-size:.95rem;margin-bottom:3px}
+        .vtype p{font-size:.8rem;color:#666}
+        .video-form{background:#f8f9fa;border-radius:8px;padding:15px}
+
+        /* Pricing */
+        .pricing-section{background:white;border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid #eee}
+        .price-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:15px}
+        .pcard{text-align:center;padding:20px;border-radius:10px;border:1px solid #eee}
+        .pcard.featured{border:2px solid #e94560;background:#fff5f5}
+        .pcard h3{font-size:1rem;margin-bottom:5px}
+        .pcard .price{font-size:1.8rem;font-weight:800;color:#e94560}
+        .pcard .price small{font-size:.9rem;color:#999}
+        .pcard ul{list-style:none;text-align:left;font-size:.85rem;margin:15px 0}
+        .pcard li{padding:6px 0;border-bottom:1px solid #f0f0f0}
+        .qr-row{display:flex;justify-content:center;gap:10px;margin-top:10px}
+        .qr-item{text-align:center}
+        .qr-item img{width:80px;height:80px;border-radius:6px}
+        .qr-item span{font-size:.75rem;color:#666;display:block}
+
+        footer{text-align:center;padding:20px;color:#888;font-size:.85rem}
+
+        @media(max-width:768px){
+            .price-cards{grid-template-columns:1fr}
+            .video-types{grid-template-columns:1fr}
+        }
+    </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">🐯 AI日记本</div>
-            <div class="nav-links">
-                <a href="#tools">工具箱</a>
-                <a href="#video">AI视频</a>
-                <a href="#pricing">价格</a>
-                <a href="#how">怎么用</a>
-                <a href="#pricing" class="nav-cta">立即购买</a>
-            </div>
-        </div>
-    </nav>
+<nav>
+    <div class="logo">🐯<span>AI</span>日记本</div>
+    <div class="nav-links">
+        <a href="#tools">即用工具</a>
+        <a href="#video">视频服务</a>
+        <a href="#pricing">价格</a>
+    </div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">🔥 不是又一个AI聊天机器人</div>
-            <h1>用AI搞钱<br><span class="highlight">的工作流工具箱</span></h1>
-            <p class="hero-sub">别人教你用AI聊天，我们教你用AI赚钱。电商文案、带货脚本、选品分析、副业方案，还有AI视频生成服务——你不用动手，我们帮你做。</p>
-            <div class="hero-stats">
-                <div class="stat"><span class="num">50+</span><span class="label">AI工作流</span></div>
-                <div class="stat"><span class="num">4</span><span class="label">大服务</span></div>
-                <div class="stat"><span class="num">¥9.9</span><span class="label">起/月</span></div>
-            </div>
-            <div class="hero-btns">
-                <a href="#video" class="btn-primary">AI视频生成 🎬</a>
-                <a href="#pricing" class="btn-secondary">查看价格</a>
-            </div>
-        </div>
-    </section>
+<div class="hero">
+    <h1>选工具 → 填需求 → 复制提示词 → 去AI直接用</h1>
+    <p>不用下载APP，不用注册账号。选一个工具，填你的需求，一键复制我们调好的提示词，打开豆包/DeepSeek/千问粘贴就能出结果。</p>
+</div>
 
-    <section id="tools" class="tools">
-        <h2>🎯 为什么选我们？</h2>
-        <p class="section-sub">豆包、千问、元宝是通用工具，我们是行业专用工作流</p>
-        <div class="compare">
-            <div class="compare-card vs">
-                <h3>❌ 通用AI聊天</h3>
-                <ul>
-                    <li>你问一句，它答一句</li>
-                    <li>每次都要自己想提示词</li>
-                    <li>结果质量看运气</li>
-                    <li>没有行业深度</li>
-                    <li>没有视频能力</li>
-                </ul>
-            </div>
-            <div class="compare-card win">
-                <h3>✅ AI日记本</h3>
-                <ul>
-                    <li>现成的高质量工作流模板</li>
-                    <li>专家调好的提示词，拿来就用</li>
-                    <li>输出稳定，质量有保障</li>
-                    <li>专注电商、副业、内容创作</li>
-                    <li>✅ AI视频生成服务</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<div class="container" id="tools">
+    <div class="tool-group">
+        <h2>📝 电商文案（免费 · 日5次）</h2>
+        <p class="sub">点任意工具，填产品名，直接复制出可用的标题/描述/话术</p>
 
-    <section class="features">
-        <h2>📦 核心工具箱</h2>
-        <p class="section-sub">每个工具都是精调过的工作流，复制到任意AI即可使用</p>
-        <div class="tool-grid">
-            <div class="tool-card">
-                <div class="tool-icon">📝</div>
-                <h3>电商文案生成</h3>
-                <p>输入产品名，自动输出淘宝标题、卖点提炼、详情页框架、促销话术。已调优SEO关键词。</p>
-                <div class="tool-tags"><span class="tag free">免费</span><span class="tag">日3次</span></div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-icon">🎬</div>
-                <h3>抖音带货脚本</h3>
-                <p>按爆款公式自动生成口播脚本：痛点开场→产品展示→效果对比→促销话术→CTA引导。</p>
-                <div class="tool-tags"><span class="tag free">免费</span><span class="tag">日3次</span></div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-icon">📕</div>
-                <h3>小红书爆款笔记</h3>
-                <p>5段式叙事模板：痛点→转折→方法论→升华→CTA。自带标题公式、标签推荐、封面文案。</p>
-                <div class="tool-tags"><span class="tag free">免费</span><span class="tag">日3次</span></div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-icon">📊</div>
-                <h3>选品分析报告</h3>
-                <p>输入行业/品类，分析市场容量、竞争密度、利润空间、运营难度，附具体建议。</p>
-                <div class="tool-tags"><span class="tag pro">会员 ¥9.9/月</span></div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-icon">💡</div>
-                <h3>AI副业方案库</h3>
-                <p>根据你的资源（时间、技能、资金），推荐最适合的AI副业方向，附详细执行步骤。</p>
-                <div class="tool-tags"><span class="tag pro">会员 ¥9.9/月</span></div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-icon">🤖</div>
-                <h3>竞品监控报告</h3>
-                <p>跟踪竞争对手的营销动作、产品变化、价格策略，自动生成周报。</p>
-                <div class="tool-tags"><span class="tag pro">会员 ¥9.9/月</span></div>
-            </div>
+        <div class="tool-card" onclick="openTool('goods-title')">
+            <h3>淘宝标题生成器 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">输入产品名+卖点，自动生成SEO优化的淘宝标题</p>
         </div>
-    </section>
-
-    <section id="video" class="video-section">
-        <h2>🎬 AI视频生成服务</h2>
-        <p class="section-sub">你把需求告诉我，我帮你用AI做出来</p>
-        <div class="video-card">
-            <div class="video-types">
-                <div class="vtype">
-                    <span class="vicon">📹</span>
-                    <h3>产品带货视频</h3>
-                    <p>上传产品照片+文案，AI自动生成30-60秒带货视频，扫码即用。</p>
-                </div>
-                <div class="vtype">
-                    <span class="vicon">🖼️</span>
-                    <h3>商品展示动画</h3>
-                    <p>静态产品图变动态展示，配上解说字幕和BGM，提升转化率。</p>
-                </div>
-                <div class="vtype">
-                    <span class="vicon">🤖</span>
-                    <h3>数字人视频</h3>
-                    <p>用AI数字人做口播，不用真人出镜也能做视频带货。</p>
-                </div>
-                <div class="vtype">
-                    <span class="vicon">✂️</span>
-                    <h3>视频剪辑优化</h3>
-                    <p>已有的视频素材，AI帮你自动剪辑、加字幕、调色、去噪。</p>
-                </div>
-            </div>
-            <div class="video-cta">
-                <p>💡 <strong>怎么使用：</strong>扫码支付 → 加微信 → 发素材 → AI制作 → 交付成品</p>
-                <p class="video-price">视频制作 ¥19.9/条起 | 会员价 ¥9.9/条</p>
-            </div>
+        <div class="tool-card" onclick="openTool('goods-desc')">
+            <h3>详情页文案 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">生成产品详情页框架：痛点→卖点→对比→证言→优惠</p>
         </div>
-    </section>
+        <div class="tool-card" onclick="openTool('sell-point')">
+            <h3>卖点提炼 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">从产品描述中提取3-5个核心卖点，适合做成短视频文案</p>
+        </div>
+        <div class="tool-card" onclick="openTool('promo-script')">
+            <h3>促销话术 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">生成限时促销、优惠活动的话术模板</p>
+        </div>
+    </div>
 
-    <section id="pricing" class="pricing">
-        <h2>💰 简单透明的价格</h2>
-        <p class="section-sub">比请一个文案便宜100倍，比试错成本低1000倍</p>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>免费版</h3>
+    <div class="tool-group">
+        <h2>🎬 短视频脚本（免费 · 日3次）</h2>
+        <p class="sub">按爆款公式生成口播脚本，复制到剪映/抖音直接用</p>
+
+        <div class="tool-card" onclick="openTool('douyin-script')">
+            <h3>抖音带货脚本 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">痛点开场→产品展示→效果对比→促销→引导下单</p>
+        </div>
+        <div class="tool-card" onclick="openTool('xhs-note')">
+            <h3>小红书笔记 <span class="tag tag-free">免费</span></h3>
+            <p class="desc">5段式爆款叙事：痛点→转折→方法→升华→CTA引导</p>
+        </div>
+    </div>
+
+    <div class="tool-group">
+        <h2>💡 搞钱方案（会员）</h2>
+        <p class="sub">扫码支付后解锁全部高级工具</p>
+
+        <div class="tool-card" onclick="showPay()">
+            <h3>选品分析报告 <span class="tag tag-pro">会员 ¥9.9/月</span></h3>
+            <p class="desc">输入行业/品类，分析市场容量、竞争密度、利润空间</p>
+        </div>
+        <div class="tool-card" onclick="showPay()">
+            <h3>AI副业方案库 <span class="tag tag-pro">会员 ¥9.9/月</span></h3>
+            <p class="desc">根据你的资源推荐最适合的AI副业方向，附执行步骤</p>
+        </div>
+        <div class="tool-card" onclick="showPay()">
+            <h3>竞品监控周报 <span class="tag tag-pro">会员 ¥9.9/月</span></h3>
+            <p class="desc">跟踪竞品的营销动作、产品变化、价格策略</p>
+        </div>
+    </div>
+
+    <!-- Tool Panel -->
+    <div id="tool-panel">
+        <button class="close" onclick="closeTool()">&times;</button>
+        <h3 id="panel-title">工具名称</h3>
+        <div class="form-group">
+            <label>产品/内容名称</label>
+            <input id="product-name" placeholder="例：防脱洗发水、运动鞋、蓝牙耳机...">
+        </div>
+        <div class="form-group" id="extra-field" style="display:none">
+            <label>更多信息（可选）</label>
+            <textarea id="extra-info" placeholder="产品的特点、目标人群、价格范围..."></textarea>
+        </div>
+        <button class="btn-gen" id="gen-btn" onclick="generatePrompt()">生成提示词 ✨</button>
+        <div class="result-box" id="result-box">
+            <div id="result-text"></div>
+            <button class="btn-copy" onclick="copyResult()">📋 一键复制</button>
+        </div>
+    </div>
+
+    <div id="video" class="video-section">
+        <h2>🎬 AI视频代做</h2>
+        <p style="color:#666;font-size:.9rem;margin-bottom:15px">你把素材发来，我们用AI帮你做，3天交付</p>
+        <div class="video-types">
+            <div class="vtype"><h3>📹 带货视频</h3><p>产品图→30秒带货视频</p></div>
+            <div class="vtype"><h3>🖼️ 产品展示</h3><p>静态图变动态展示</p></div>
+            <div class="vtype"><h3>🤖 数字人口播</h3><p>不用真人出镜</p></div>
+            <div class="vtype"><h3>✂️ 剪辑优化</h3><p>加字幕+调色+去噪</p></div>
+        </div>
+        <div class="video-form">
+            <div class="form-group">
+                <label>视频类型</label>
+                <select><option>带货视频</option><option>产品展示</option><option>数字人口播</option><option>剪辑优化</option></select>
+            </div>
+            <div class="form-group">
+                <label>需求说明</label>
+                <textarea placeholder="描述你的产品/素材情况、想要的风格..."></textarea>
+            </div>
+            <p style="text-align:center;color:#e94560;font-weight:600;margin-top:10px">
+                💰 ¥19.9/条 · 会员¥9.9/条 · 扫码下单后联系客服
+            </p>
+        </div>
+    </div>
+
+    <div id="pricing" class="pricing-section">
+        <h2>💰 价格</h2>
+        <div class="price-cards">
+            <div class="pcard">
+                <h3>免费</h3>
                 <div class="price">¥0</div>
                 <ul>
-                    <li>✅ 电商文案基础模板</li>
-                    <li>✅ 带货脚本基础版</li>
-                    <li>✅ 小红书笔记模板</li>
-                    <li>✅ 每日3次AI调用</li>
-                    <li>❌ 选品分析报告</li>
-                    <li>❌ 副业方案库</li>
-                    <li>❌ AI视频服务</li>
+                    <li>✅ 文案生成 5次/天</li>
+                    <li>✅ 脚本生成 3次/天</li>
+                    <li>✅ 一键复制提示词</li>
+                    <li>❌ 选品分析</li>
+                    <li>❌ 副业方案</li>
+                    <li>❌ 视频服务</li>
                 </ul>
-                <a href="#" class="price-btn">免费使用</a>
+                <a href="#tools" style="color:#e94560;font-weight:600;text-decoration:none">直接用 →</a>
             </div>
-            <div class="price-card featured">
-                <div class="popular">🔥 最受欢迎</div>
-                <h3>月度会员</h3>
+            <div class="pcard featured">
+                <h3>🔥 月度会员</h3>
                 <div class="price">¥9.9<small>/月</small></div>
                 <ul>
-                    <li>✅ 全部50+工作流</li>
-                    <li>✅ 每周更新新模板</li>
-                    <li>✅ 副业方案库</li>
-                    <li>✅ 选品分析报告</li>
-                    <li>✅ 竞品监控周报</li>
-                    <li>✅ 视频制作 ¥9.9/条</li>
-                    <li>✅ 专属服务群</li>
+                    <li>✅ 全部工具不限次</li>
+                    <li>✅ 选品+副业+竞品</li>
+                    <li>✅ 视频 ¥9.9/条</li>
+                    <li>✅ 每周新模板</li>
                 </ul>
-                <div class="pay-qr">
-                    <p class="pay-label">👇 扫码支付 ¥9.9/月</p>
-                    <div class="qr-row">
-                        <div class="qr-item">
-                            <img src="pay_alipay.jpg" alt="支付宝" class="qr-img">
-                            <span>支付宝</span>
-                        </div>
-                        <div class="qr-item">
-                            <img src="pay_wechat.jpg" alt="微信" class="qr-img">
-                            <span>微信</span>
-                        </div>
+                <div class="qr-row">
+                    <div class="qr-item">
+                        <img src="pay_alipay.jpg" alt="支付宝" onerror="this.style.display='none'">
+                        <span>支付宝</span>
                     </div>
-                    <p class="pay-hint">支付后截图联系客服开通</p>
+                    <div class="qr-item">
+                        <img src="pay_wechat.jpg" alt="微信" onerror="this.style.display='none'">
+                        <span>微信</span>
+                    </div>
                 </div>
+                <p style="font-size:.75rem;color:#999;margin-top:5px">扫码付款 → 截图联系客服开通</p>
             </div>
-            <div class="price-card">
+            <div class="pcard">
                 <h3>视频单次</h3>
                 <div class="price">¥19.9<small>/条</small></div>
                 <ul>
-                    <li>✅ 产品带货视频</li>
-                    <li>✅ 商品展示动画</li>
-                    <li>✅ 数字人口播</li>
-                    <li>✅ 视频剪辑优化</li>
-                    <li>✅ 3个工作日内交付</li>
-                    <li>✅ 支付宝/微信支付</li>
-                    <li>❌ 无需会员</li>
+                    <li>✅ 不限视频类型</li>
+                    <li>✅ 3天交付</li>
+                    <li>✅ 不买会员也能用</li>
+                    <li>❌ 需提供素材</li>
                 </ul>
-                <a href="#" class="price-btn">扫码下单</a>
+                <a href="#video" style="color:#e94560;font-weight:600;text-decoration:none">填需求 →</a>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <section id="how" class="howto">
-        <h2>📋 三步开始使用</h2>
-        <div class="steps">
-            <div class="step">
-                <span class="step-num">1</span>
-                <h3>选择服务</h3>
-                <p>免费模板直接复制使用。视频服务扫码下单。</p>
-            </div>
-            <div class="step">
-                <span class="step-num">2</span>
-                <h3>扫码支付</h3>
-                <p>支付宝或微信扫码，支付对应金额。</p>
-            </div>
-            <div class="step">
-                <span class="step-num">3</span>
-                <h3>联系我们</h3>
-                <p>支付后截图发给客服，我们开始为你服务。</p>
-            </div>
-        </div>
-    </section>
+<footer>
+    <p>© 2026 AI日记本 · xwwlkj.xyz · 用AI改变生活</p>
+</footer>
 
-    <section class="about">
-        <h2>🐯 关于AI日记本</h2>
-        <p>由AI助手小武主理。我们相信AI不应该只是聊天玩具，而应该成为每个人的生产力引擎和赚钱工具。</p>
-        <p>所有服务经过实战调优，确保输出质量。</p>
-        <p>GitHub：<a href="https://github.com/XiaowuxueAI">@XiaowuxueAI</a></p>
-    </section>
+<script>
+// Tool configurations
+const tools = {
+    'goods-title': {
+        title: '淘宝标题生成器',
+        extra: false,
+        placeholder: '例：防脱洗发水、运动鞋、蓝牙耳机...',
+        gen: (name) => `你是一位淘宝资深运营专家。请为一个电商产品生成5个高转化的淘宝标题。
 
-    <footer>
-        <p>&copy; 2026 AI日记本 &middot; xwwlkj.xyz</p>
-        <p class="footer-tag">不是又一个AI聊天 &mdash; 是帮你用AI赚钱的工作流工具箱</p>
-    </footer>
+产品：${name}
+
+要求：
+1. 每个标题不超过30个字
+2. 包含核心关键词+卖点词+场景词+促销词
+3. SEO优化，覆盖用户搜索习惯
+4. 格式：每个标题一行
+
+示例输出格式：
+[品牌词] + [核心词] + [卖点词] + [场景词] + [促销词]`
+    },
+    'goods-desc': {
+        title: '详情页文案',
+        extra: true,
+        placeholder: '例：产品特点、目标人群、价格...',
+        gen: (name, info) => `你是一位电商详情页优化专家。请为以下产品生成完整的详情页文案框架。
+
+产品：${name}
+${info ? '补充信息：' + info : ''}
+
+要求：
+1. 按以下结构输出：
+   【痛点共鸣】目标人群的常见问题
+   【产品引入】产品如何解决痛点
+   【核心卖点】3-5个卖点（含数据支撑）
+   【使用场景】2-3个真实使用场景
+   【对比优势】与同类产品的区别
+   【用户证言】模拟2-3条真实评价
+   【限时优惠】促销话术+行动号召
+2. 语言贴近淘宝/京东详情页风格
+3. 每部分100-150字`
+    },
+    'sell-point': {
+        title: '卖点提炼',
+        extra: true,
+        gen: (name, info) => `你是一位产品营销专家。请为以下产品提炼核心卖点。
+
+产品：${name}
+${info ? '补充信息：' + info : ''}
+
+输出格式（每个卖点2-3句话）：
+🔥 卖点一：[标题]
+[详细说明]
+
+🔥 卖点二：[标题]
+[详细说明]
+
+🔥 卖点三：[标题]
+[详细说明]
+
+🔥 卖点四：[标题]
+[详细说明]
+
+🔥 卖点五：[标题]
+[详细说明]
+
+要求：每个卖点包含具体数据或场景，避免空泛描述。`
+    },
+    'promo-script': {
+        title: '促销话术',
+        extra: true,
+        gen: (name, info) => `你是一位电商促销策划专家。请为以下产品生成促销话术。
+
+产品：${name}
+${info ? '补充信息：' + info : ''}
+
+输出：
+1. 限时秒杀话术（60字以内）
+2. 满减话术
+3. 赠品话术
+4. 紧迫感话术（库存有限型）
+5. 信任话术（售后保障型）
+
+每个话术要求：有数据、有场景、有行动引导。`
+    },
+    'douyin-script': {
+        title: '抖音带货脚本',
+        extra: true,
+        gen: (name, info) => `你是一位抖音短视频爆款脚本策划专家。请为以下产品生成一个完整的带货脚本。
+
+产品：${name}
+${info ? '补充信息：' + info : ''}
+
+输出格式：
+
+【0-5秒】痛点开场（抓注意力）
+[画面描述]：[文字]
+
+【5-15秒】产品引入
+[画面描述]：[文字]
+
+【15-25秒】效果展示/对比
+[画面描述]：[文字]
+
+【25-35秒】用户证言/信任建立
+[画面描述]：[文字]
+
+【35-45秒】促销话术
+[画面描述]：[文字]
+
+【45-60秒】CTA引导下单
+[画面描述]：[文字]
+
+时长：约60秒
+BGM建议：[推荐风格]
+字幕要点：[关键词高亮建议]`
+    },
+    'xhs-note': {
+        title: '小红书爆款笔记',
+        extra: true,
+        gen: (name, info) => `你是一位小红书爆款笔记写手。请为以下主题生成一篇高互动笔记。
+
+主题：${name}
+${info ? '补充信息：' + info : ''}
+
+要求：
+1. 使用5段式叙事结构
+2. 标题前13字放核心关键词
+3. 正文300-500字，短句为主
+4. 结尾必须有引导评论的CTA
+
+输出格式：
+标题：[20字以内]
+
+正文：
+[段落一：痛点场景 - 具体画面/情绪]
+[段落二：转折触发 - 发现/行动]
+[段落三：方法论 - 3条可执行建议]
+[段落四：升华 - 观点/感悟]
+[段落五：收尾祝福 + CTA提问]
+
+标签：#相关话题1 #相关话题2 #相关话题3 #相关话题4 #相关话题5`
+    }
+};
+
+let currentTool = '';
+
+function openTool(id) {
+    if (id === 'xhs-note') {
+        showPay();
+        return;
+    }
+    const tool = tools[id];
+    if (!tool) return;
+    
+    currentTool = id;
+    document.getElementById('panel-title').textContent = tool.title;
+    document.getElementById('product-name').placeholder = tool.placeholder || '例：防脱洗发水...';
+    document.getElementById('product-name').value = '';
+    
+    if (tool.extra) {
+        document.getElementById('extra-field').style.display = 'block';
+        document.getElementById('extra-info').value = '';
+    } else {
+        document.getElementById('extra-field').style.display = 'none';
+    }
+    
+    document.getElementById('result-box').style.display = 'none';
+    document.getElementById('tool-panel').style.display = 'block';
+    document.getElementById('tool-panel').scrollIntoView({behavior:'smooth'});
+}
+
+function closeTool() {
+    document.getElementById('tool-panel').style.display = 'none';
+}
+
+function generatePrompt() {
+    const tool = tools[currentTool];
+    if (!tool) return;
+    
+    const name = document.getElementById('product-name').value.trim();
+    if (!name) {
+        alert('请先填写产品/内容名称');
+        return;
+    }
+    
+    let result;
+    if (tool.extra) {
+        const info = document.getElementById('extra-info').value.trim();
+        result = tool.gen(name, info);
+    } else {
+        result = tool.gen(name);
+    }
+    
+    document.getElementById('result-text').textContent = result;
+    document.getElementById('result-box').style.display = 'block';
+}
+
+function copyResult() {
+    const text = document.getElementById('result-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.btn-copy');
+        btn.textContent = '✅ 已复制！';
+        setTimeout(() => { btn.textContent = '📋 一键复制'; }, 2000);
+    }).catch(() => {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('已复制到剪贴板！');
+    });
+}
+
+function showPay() {
+    const pricing = document.getElementById('pricing');
+    pricing.scrollIntoView({behavior:'smooth'});
+    setTimeout(() => {
+        alert('💡 这个功能需要开通会员才能使用\n\n扫描下方二维码支付 ¥9.9/月\n截图联系客服开通后即可使用');
+    }, 500);
+}
+</script>
 </body>
 </html>
