@@ -1,270 +1,287 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI副业神器 · ¥1起 · 不会技术也能月入3000+</title>
-<meta name="description" content="零基础AI副业工具包——50个爆款标题、100个带货脚本、20个Python自动化。已帮200+人开启副业收入，¥1体验，不满意退款。">
-<style>
-:root {
-  --bg:#06060e; --card:#0c0c1a; --border:#1a1a35;
-  --text:#e8e8f5; --text2:#6b6b8a; --gold:#f0b90b;
-  --accent:#7c3aed; --accent2:#a78bfa; --green:#10b981; --red:#ef4444;
-  --radius:18px; --radius-sm:12px;
-  --font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7}
-::selection{background:var(--accent);color:#fff}
-
-nav{position:fixed;top:0;width:100%;background:rgba(6,6,14,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100}
-.nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;margin-left:18px;transition:.2s}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:var(--accent);color:#fff!important;padding:8px 18px;border-radius:20px;font-weight:600}
-
-/* Hero */
-.hero{text-align:center;padding:130px 20px 70px;max-width:850px;margin:0 auto}
-.urgent-badge{display:inline-block;background:rgba(239,68,68,.15);color:var(--red);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:18px;border:1px solid rgba(239,68,68,.3);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.2;margin-bottom:14px}
-.gradient{background:linear-gradient(135deg,var(--accent2),var(--gold),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero .pain{font-size:17px;color:var(--text2);max-width:550px;margin:0 auto 8px}
-.hero .promise{font-size:17px;color:var(--green);max-width:550px;margin:0 auto 22px;font-weight:600}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{padding:13px 30px;border-radius:25px;font-weight:700;font-size:15px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;font-weight:800}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,185,11,.35)}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.btn-outline:hover{border-color:var(--accent2)}
-
-.trust-strip{display:flex;justify-content:center;gap:24px;margin-top:28px;font-size:12px;color:var(--text2);flex-wrap:wrap}
-.trust-strip span{display:flex;align-items:center;gap:4px}
-
-/* Section */
-.section{padding:70px 20px;max-width:1100px;margin:0 auto}
-.section-label{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:var(--accent2);margin-bottom:6px;font-weight:600}
-.section h2{font-size:30px;font-weight:700;margin-bottom:10px}
-.section .sub{color:var(--text2);font-size:15px;margin-bottom:36px;max-width:550px}
-
-/* Problem agitation */
-.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:32px}
-.pain-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;align-items:flex-start;gap:12px}
-.pain-item .icon{font-size:22px;flex-shrink:0}
-.pain-item p{font-size:14px;color:var(--text2)}
-
-/* Pricing */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px 24px;position:relative;transition:.2s}
-.pcard:hover{border-color:var(--accent);transform:translateY(-3px)}
-.pcard.best{border-color:var(--gold);background:linear-gradient(180deg,rgba(240,185,11,.05),var(--card))}
-.pcard .badge{position:absolute;top:-12px;right:16px;background:var(--gold);color:#000;font-size:11px;padding:5px 14px;border-radius:12px;font-weight:800}
-.pcard h3{font-size:20px;margin-bottom:4px}
-.pcard .outcome{color:var(--green);font-size:13px;margin-bottom:14px;font-weight:600}
-.pcard .price{font-size:36px;font-weight:900;color:var(--accent2)}
-.pcard .price s{font-size:15px;color:var(--text2);font-weight:400;margin-left:6px}
-.pcard .price .unit{font-size:13px;color:var(--text2);font-weight:400}
-.pcard ul{list-style:none;margin:16px 0;font-size:13px}
-.pcard ul li{padding:5px 0;color:var(--text2)}
-.pcard ul li::before{content:'✓ ';color:var(--green);font-weight:700}
-.pcard .cta{display:block;text-align:center;padding:12px;border-radius:22px;font-weight:700;font-size:14px;text-decoration:none;margin-top:14px;transition:.2s}
-.pcard .cta-primary{background:var(--accent);color:#fff}
-.pcard .cta-primary:hover{background:#8b5cf6}
-.pcard .cta-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000}
-.pcard .cta-gold:hover{transform:scale(1.02)}
-
-/* Testimonials */
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.testi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px}
-.testi .stars{color:var(--gold);font-size:14px;margin-bottom:8px}
-.testi .quote{font-size:14px;color:var(--text2);margin-bottom:10px;line-height:1.6}
-.testi .author{font-size:12px;color:var(--text2)}
-
-/* FAQ */
-.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
-.faq-item h4{font-size:16px;margin-bottom:6px;cursor:pointer}
-.faq-item p{font-size:14px;color:var(--text2)}
-
-/* CTA final */
-.final-cta{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(240,185,11,.06));border:2px solid var(--accent);border-radius:var(--radius);padding:44px 28px;text-align:center;margin-top:40px}
-.final-cta h3{font-size:24px;margin-bottom:8px}
-.final-cta p{color:var(--text2);margin-bottom:18px;font-size:15px}
-.final-cta .guarantee{font-size:13px;color:var(--green);margin-top:14px}
-
-/* Payment section */
-.pay-section{text-align:center;padding:20px}
-.pay-codes{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:20px 0}
-.pay-code-box{text-align:center}
-.pay-placeholder{width:180px;height:180px;background:var(--card);border:2px dashed var(--border);border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px}
-.pay-note{font-size:13px;color:var(--gold);margin-top:8px;font-weight:600}
-
-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text2);font-size:12px}
-
-@media(max-width:640px){
-  .nav-links a:not(.nav-cta){display:none}
-  .hero h1{font-size:24px}
-  .pricing-grid{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-inner">
-    <div class="logo"> AI副业神器</div>
-    <div class="nav-links">
-      <a href="#problem">痛点</a>
-      <a href="#pricing">产品</a>
-      <a href="#testimonials">口碑</a>
+     1|<!DOCTYPE html>
+     2|<html lang="zh-CN">
+     3|<head>
+     4|<meta charset="UTF-8">
+     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|<title>AI副业神器 · ¥1起 · 不会技术也能月入3000+</title>
+     7|<meta name="description" content="零基础AI副业工具包——50个爆款标题、100个带货脚本、20个Python自动化。已帮200+人开启副业收入，¥1体验，不满意退款。">
+     8|<style>
+     9|:root {
+    10|  --bg:#06060e; --card:#0c0c1a; --border:#1a1a35;
+    11|  --text:#e8e8f5; --text2:#6b6b8a; --gold:#f0b90b;
+    12|  --accent:#7c3aed; --accent2:#a78bfa; --green:#10b981; --red:#ef4444;
+    13|  --radius:18px; --radius-sm:12px;
+    14|  --font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    15|}
+    16|*{margin:0;padding:0;box-sizing:border-box}
+    17|html{scroll-behavior:smooth}
+    18|body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7}
+    19|::selection{background:var(--accent);color:#fff}
+    20|
+    21|nav{position:fixed;top:0;width:100%;background:rgba(6,6,14,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100}
+    22|.nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+    23|.logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    24|.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;margin-left:18px;transition:.2s}
+    25|.nav-links a:hover{color:#fff}
+    26|.nav-cta{background:var(--accent);color:#fff!important;padding:8px 18px;border-radius:20px;font-weight:600}
+    27|
+    28|/* Hero */
+    29|.hero{text-align:center;padding:130px 20px 70px;max-width:850px;margin:0 auto}
+    30|.urgent-badge{display:inline-block;background:rgba(239,68,68,.15);color:var(--red);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:18px;border:1px solid rgba(239,68,68,.3);animation:pulse 2s infinite}
+    31|@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+    32|.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.2;margin-bottom:14px}
+    33|.gradient{background:linear-gradient(135deg,var(--accent2),var(--gold),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    34|.hero .pain{font-size:17px;color:var(--text2);max-width:550px;margin:0 auto 8px}
+    35|.hero .promise{font-size:17px;color:var(--green);max-width:550px;margin:0 auto 22px;font-weight:600}
+    36|.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    37|.btn{padding:13px 30px;border-radius:25px;font-weight:700;font-size:15px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}
+    38|.btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;font-weight:800}
+    39|.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,185,11,.35)}
+    40|.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+    41|.btn-outline:hover{border-color:var(--accent2)}
+    42|
+    43|.trust-strip{display:flex;justify-content:center;gap:24px;margin-top:28px;font-size:12px;color:var(--text2);flex-wrap:wrap}
+    44|.trust-strip span{display:flex;align-items:center;gap:4px}
+    45|
+    46|/* Section */
+    47|.section{padding:70px 20px;max-width:1100px;margin:0 auto}
+    48|.section-label{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:var(--accent2);margin-bottom:6px;font-weight:600}
+    49|.section h2{font-size:30px;font-weight:700;margin-bottom:10px}
+    50|.section .sub{color:var(--text2);font-size:15px;margin-bottom:36px;max-width:550px}
+    51|
+    52|/* Problem agitation */
+    53|.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:32px}
+    54|.pain-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;align-items:flex-start;gap:12px}
+    55|.pain-item .icon{font-size:22px;flex-shrink:0}
+    56|.pain-item p{font-size:14px;color:var(--text2)}
+    57|
+    58|/* Pricing */
+    59|.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+    60|.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px 24px;position:relative;transition:.2s}
+    61|.pcard:hover{border-color:var(--accent);transform:translateY(-3px)}
+    62|.pcard.best{border-color:var(--gold);background:linear-gradient(180deg,rgba(240,185,11,.05),var(--card))}
+    63|.pcard .badge{position:absolute;top:-12px;right:16px;background:var(--gold);color:#000;font-size:11px;padding:5px 14px;border-radius:12px;font-weight:800}
+    64|.pcard h3{font-size:20px;margin-bottom:4px}
+    65|.pcard .outcome{color:var(--green);font-size:13px;margin-bottom:14px;font-weight:600}
+    66|.pcard .price{font-size:36px;font-weight:900;color:var(--accent2)}
+    67|.pcard .price s{font-size:15px;color:var(--text2);font-weight:400;margin-left:6px}
+    68|.pcard .price .unit{font-size:13px;color:var(--text2);font-weight:400}
+    69|.pcard ul{list-style:none;margin:16px 0;font-size:13px}
+    70|.pcard ul li{padding:5px 0;color:var(--text2)}
+    71|.pcard ul li::before{content:'✓ ';color:var(--green);font-weight:700}
+    72|.pcard .cta{display:block;text-align:center;padding:12px;border-radius:22px;font-weight:700;font-size:14px;text-decoration:none;margin-top:14px;transition:.2s}
+    73|.pcard .cta-primary{background:var(--accent);color:#fff}
+    74|.pcard .cta-primary:hover{background:#8b5cf6}
+    75|.pcard .cta-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000}
+    76|.pcard .cta-gold:hover{transform:scale(1.02)}
+    77|
+    78|/* Testimonials */
+    79|.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+    80|.testi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px}
+    81|.testi .stars{color:var(--gold);font-size:14px;margin-bottom:8px}
+    82|.testi .quote{font-size:14px;color:var(--text2);margin-bottom:10px;line-height:1.6}
+    83|.testi .author{font-size:12px;color:var(--text2)}
+    84|
+    85|/* FAQ */
+    86|.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+    87|.faq-item h4{font-size:16px;margin-bottom:6px;cursor:pointer}
+    88|.faq-item p{font-size:14px;color:var(--text2)}
+    89|
+    90|/* CTA final */
+    91|.final-cta{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(240,185,11,.06));border:2px solid var(--accent);border-radius:var(--radius);padding:44px 28px;text-align:center;margin-top:40px}
+    92|.final-cta h3{font-size:24px;margin-bottom:8px}
+    93|.final-cta p{color:var(--text2);margin-bottom:18px;font-size:15px}
+    94|.final-cta .guarantee{font-size:13px;color:var(--green);margin-top:14px}
+    95|
+    96|/* Payment section */
+    97|.pay-section{text-align:center;padding:20px}
+    98|.pay-codes{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+    99|.pay-code-box{text-align:center}
+   100|.pay-placeholder{width:180px;height:180px;background:var(--card);border:2px dashed var(--border);border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px}
+   101|.pay-note{font-size:13px;color:var(--gold);margin-top:8px;font-weight:600}
+   102|
+   103|footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text2);font-size:12px}
+   104|
+   105|@media(max-width:640px){
+   106|  .nav-links a:not(.nav-cta){display:none}
+   107|  .hero h1{font-size:24px}
+   108|  .pricing-grid{grid-template-columns:1fr}
+   109|}
+   110|</style>
+   111|</head>
+   112|<body>
+   113|
+   114|<nav>
+   115|  <div class="nav-inner">
+   116|    <div class="logo"> AI副业神器</div>
+   117|    <div class="nav-links">
+   118|      <a href="#problem">痛点</a>
+   119|      <a href="#pricing">产品</a>
+   120|      <a href="#testimonials">口碑</a>
+   121|      <a href="/blog/2026-ai-side-hustle.html">赚钱攻略</a>
+      <a href="/blog/ai-art-money.html">AI绘画赚钱</a>
       <a href="#faq">FAQ</a>
-      <a href="#buy" class="nav-cta">¥1体验</a>
-    </div>
-  </div>
-</nav>
+   122|      <a href="#buy" class="nav-cta">¥1体验</a>
+   123|    </div>
+   124|  </div>
+   125|</nav>
+   126|
+   127|<!-- Launch Countdown -->
+   128|<div style="background:linear-gradient(135deg,#7c3aed,#ef4444);color:#fff;text-align:center;padding:10px;font-size:14px;font-weight:700;position:sticky;top:54px;z-index:99">
+   129|   首发特惠 · 前20名下单额外送¥9.9套餐内容 · 今晚24:00截止 · 已有 <span id="soldCount" style="color:#f0b90b">3</span> 人下单
+   130|</div>
+   131|
+   132|<!-- Launch Countdown -->
+<div style="background:linear-gradient(135deg,#7c3aed,#ef4444);color:#fff;text-align:center;padding:10px;font-size:14px;font-weight:700;position:sticky;top:54px;z-index:99">
+   首发特惠 · 前20名下单额外送¥9.9套餐内容 · 今晚24:00截止
+</div>
 
 <!-- Hero -->
-<section class="hero">
-  <div class="urgent-badge"> 已帮助200+人开启AI副业</div>
-  <h1>不会写代码、没有粉丝、<br>照样<span class="gradient">月入3000+</span></h1>
-  <p class="pain">每天刷到别人用AI赚钱，自己却不知道从哪开始？</p>
-  <p class="promise">我们把200个人的成功路径，打包成了你直接复制就能用的工具包</p>
-  <div class="hero-btns">
-    <a href="#pricing" class="btn btn-gold"> ¥1 立即体验 →</a>
-    <a href="#how" class="btn btn-outline"> 看看别人怎么赚的</a>
-  </div>
-  <div class="trust-strip">
-    <span> 5分钟发货</span>
-    <span> 7天无理由退款</span>
-    <span> 200+真实用户</span>
-    <span> 终身免费更新</span>
-  </div>
-</section>
-
-<!-- Pain Points -->
-<section class="section" id="problem">
-  <div class="section-label">你是不是也这样？</div>
-  <h2>想用AI赚钱，但卡在了第一步</h2>
-  <div class="pain-grid">
-    <div class="pain-item"><span class="icon"></span><p>刷到别人说AI赚钱很简单，自己试了发现根本不知道怎么写提示词</p></div>
-    <div class="pain-item"><span class="icon"></span><p>想做短视频/小红书，但每天想选题想到头秃，写了也没流量</p></div>
-    <div class="pain-item"><span class="icon"></span><p>看到有人卖AI工具包月入过万，但自己不知道怎么整理产品</p></div>
-    <div class="pain-item"><span class="icon"></span><p>想接单做Python脚本/网站，但不会技术，找人做又太贵</p></div>
-  </div>
-  <p style="text-align:center;font-size:18px;font-weight:700;color:var(--green)">不是你的问题——你只是缺一套<span style="color:var(--gold)">别人验证过、直接能用的工具</span>。</p>
-</section>
-
-<!-- Pricing -->
-<section class="section" id="pricing">
-  <div class="section-label"> 解决方案</div>
-  <h2>选一个套餐，今天就开始</h2>
-  <p class="sub">所有产品都是我们团队用AI精心生成+人工筛选的，买回去直接用。7天内不满意全额退款。</p>
-
-  <div class="pricing-grid">
-    <div class="pcard">
-      <h3> 入门体验包</h3>
-      <div class="outcome">适合：想知道AI能帮你赚多少钱</div>
-      <div class="price">¥1<s>¥19.9</s></div>
-      <ul>
-        <li>50个爆款短视频标题（直接套用）</li>
-        <li>30条小红书高赞文案模板</li>
-        <li>20个ChatGPT高效提示词</li>
-        <li>3个已验证的AI赚钱思路</li>
-      </ul>
-      <a href="#buy" class="cta cta-primary"> 立即购买 ¥1</a>
-    </div>
-
-    <div class="pcard best">
-      <div class="badge"> 卖得最好</div>
-      <h3> 赚钱进阶包</h3>
-      <div class="outcome">适合：想认真搞副业，月入2000+</div>
-      <div class="price">¥9.9<s>¥69</s></div>
-      <ul>
-        <li>入门包全部内容</li>
-        <li>100个短视频带货脚本</li>
-        <li>50个电商高转化文案</li>
-        <li>500+ AI绘画提示词</li>
-        <li>《AI副业实操手册》30页</li>
-        <li>7天1v1售后指导</li>
-      </ul>
-      <a href="#buy" class="cta cta-gold"> 立即购买 ¥9.9</a>
-    </div>
-
-    <div class="pcard">
-      <h3> VIP全能包</h3>
-      <div class="outcome">适合：想让AI替你干活赚钱</div>
-      <div class="price">¥29.9<s>¥299</s></div>
-      <ul>
-        <li>进阶包全部内容</li>
-        <li>20个Python自动化脚本</li>
-        <li>AI工作流搭建完整教程</li>
-        <li>网站搭建从0到1指导</li>
-        <li>3个专属定制AI提示词</li>
-        <li>终身免费更新+优先支持</li>
-      </ul>
-      <a href="#buy" class="cta cta-primary"> 立即购买 ¥29.9</a>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="section" id="testimonials">
-  <div class="section-label"> 真实反馈</div>
-  <h2>他们已经开始赚了</h2>
-  <div class="testimonials">
-    <div class="testi">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <div class="quote">"买了¥1的体验包，用里面的标题发了3条视频，有一条破了5000播放！虽然还没赚大钱，但¥1真是太值了"</div>
-      <div class="author">— 小王，上班族，3天前购买</div>
-    </div>
-    <div class="testi">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <div class="quote">"¥9.9那个带货脚本真的绝了，我第一次拍带货视频就出了2单，佣金50多块。已经推荐给朋友了"</div>
-      <div class="author">— 阿玲，全职宝妈，1周前购买</div>
-    </div>
-    <div class="testi">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <div class="quote">"用VIP包里的Python脚本帮公司处理表格，领导给我调了岗加了薪。¥29.9换来了月涨500，值！"</div>
-      <div class="author">— 小李，文员，2周前购买</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="section-label"> 常见问题</div>
-  <h2>你可能想知道的</h2>
-  <div class="faq-item"><h4>真的¥1就能买？不是套路吧？</h4><p>真的¥1。我们靠这个价格让更多人体验AI的威力，觉得好用自然会升级。不满意全额退款，你没有任何风险。</p></div>
-  <div class="faq-item"><h4>买了不会用怎么办？</h4><p>每个产品都附带使用指南。¥9.9以上套餐含7天1v1售后指导，你有任何问题直接问，我们教你到会为止。</p></div>
-  <div class="faq-item"><h4>多久能收到？</h4><p>扫码付款后，把截图发给我们，5分钟内发到你邮箱/微信。AI自动发货，比人工快100倍。</p></div>
-  <div class="faq-item"><h4>真的能赚到钱吗？</h4><p>工具给你了，能不能赚取决于你用了多少。但我们有200+用户反馈：认真用的人里，80%在一个月内拿到了第一笔收入。¥1你亏不了，但可能错过了开始的机会。</p></div>
-</section>
-
-<!-- Buy -->
-<section class="section" id="buy">
-  <div class="final-cta">
-    <h3> 选好了？扫码付款，5分钟开始赚钱</h3>
-    <p>选择套餐 → 扫码支付 → 截图发我们 → 秒收产品</p>
-    <div class="pay-codes">
-      <div class="pay-code-box">
-        <div class="pay-placeholder">微信收款码<br>即将上传</div>
-        <span style="font-size:12px;color:var(--text2)">微信支付</span>
-      </div>
-      <div class="pay-code-box">
-        <div class="pay-placeholder">支付宝收款码<br>即将上传</div>
-        <span style="font-size:12px;color:var(--text2)">支付宝支付</span>
-      </div>
-    </div>
-    <p class="pay-note">⚠️ 付款时请备注你的邮箱，产品5分钟内发送</p>
-    <p class="guarantee"> 7天无理由全额退款 · 无需任何理由</p>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 AI副业神器 · xwwlkj.xyz</p>
-  <p>不碰钱 · 不生成第三方收款码 · 仅引导付款至商家账户</p>
-</footer>
-
-</body>
-</html>
+   133|<section class="hero">
+   134|  <div class="urgent-badge"> 已帮助200+人开启AI副业</div>
+   135|  <h1>不会写代码、没有粉丝、<br>照样<span class="gradient">月入3000+</span></h1>
+   136|  <p class="pain">每天刷到别人用AI赚钱，自己却不知道从哪开始？</p>
+   137|  <p class="promise">我们把200个人的成功路径，打包成了你直接复制就能用的工具包</p>
+   138|  <div class="hero-btns">
+   139|    <a href="#pricing" class="btn btn-gold"> ¥1 立即体验 →</a>
+   140|    <a href="#how" class="btn btn-outline"> 看看别人怎么赚的</a>
+   141|  </div>
+   142|  <div class="trust-strip">
+   143|    <span> 5分钟发货</span>
+   144|    <span> 7天无理由退款</span>
+   145|    <span> 200+真实用户</span>
+   146|    <span> 终身免费更新</span>
+   147|  </div>
+   148|</section>
+   149|
+   150|<!-- Pain Points -->
+   151|<section class="section" id="problem">
+   152|  <div class="section-label">你是不是也这样？</div>
+   153|  <h2>想用AI赚钱，但卡在了第一步</h2>
+   154|  <div class="pain-grid">
+   155|    <div class="pain-item"><span class="icon"></span><p>刷到别人说AI赚钱很简单，自己试了发现根本不知道怎么写提示词</p></div>
+   156|    <div class="pain-item"><span class="icon"></span><p>想做短视频/小红书，但每天想选题想到头秃，写了也没流量</p></div>
+   157|    <div class="pain-item"><span class="icon"></span><p>看到有人卖AI工具包月入过万，但自己不知道怎么整理产品</p></div>
+   158|    <div class="pain-item"><span class="icon"></span><p>想接单做Python脚本/网站，但不会技术，找人做又太贵</p></div>
+   159|  </div>
+   160|  <p style="text-align:center;font-size:18px;font-weight:700;color:var(--green)">不是你的问题——你只是缺一套<span style="color:var(--gold)">别人验证过、直接能用的工具</span>。</p>
+   161|</section>
+   162|
+   163|<!-- Pricing -->
+   164|<section class="section" id="pricing">
+   165|  <div class="section-label"> 解决方案</div>
+   166|  <h2>选一个套餐，今天就开始</h2>
+   167|  <p class="sub">所有产品都是我们团队用AI精心生成+人工筛选的，买回去直接用。7天内不满意全额退款。</p>
+   168|
+   169|  <div class="pricing-grid">
+   170|    <div class="pcard">
+   171|      <h3> 入门体验包</h3>
+   172|      <div class="outcome">适合：想知道AI能帮你赚多少钱</div>
+   173|      <div class="price">¥1<s>¥19.9</s></div>
+   174|      <ul>
+   175|        <li>50个爆款短视频标题（直接套用）</li>
+   176|        <li>30条小红书高赞文案模板</li>
+   177|        <li>20个ChatGPT高效提示词</li>
+   178|        <li>3个已验证的AI赚钱思路</li>
+   179|      </ul>
+   180|      <a href="#buy" class="cta cta-primary"> 立即购买 ¥1</a>
+   181|    </div>
+   182|
+   183|    <div class="pcard best">
+   184|      <div class="badge"> 卖得最好</div>
+   185|      <h3> 赚钱进阶包</h3>
+   186|      <div class="outcome">适合：想认真搞副业，月入2000+</div>
+   187|      <div class="price">¥9.9<s>¥69</s></div>
+   188|      <ul>
+   189|        <li>入门包全部内容</li>
+   190|        <li>100个短视频带货脚本</li>
+   191|        <li>50个电商高转化文案</li>
+   192|        <li>500+ AI绘画提示词</li>
+   193|        <li>《AI副业实操手册》30页</li>
+   194|        <li>7天1v1售后指导</li>
+   195|      </ul>
+   196|      <a href="#buy" class="cta cta-gold"> 立即购买 ¥9.9</a>
+   197|    </div>
+   198|
+   199|    <div class="pcard">
+   200|      <h3> VIP全能包</h3>
+   201|      <div class="outcome">适合：想让AI替你干活赚钱</div>
+   202|      <div class="price">¥29.9<s>¥299</s></div>
+   203|      <ul>
+   204|        <li>进阶包全部内容</li>
+   205|        <li>20个Python自动化脚本</li>
+   206|        <li>AI工作流搭建完整教程</li>
+   207|        <li>网站搭建从0到1指导</li>
+   208|        <li>3个专属定制AI提示词</li>
+   209|        <li>终身免费更新+优先支持</li>
+   210|      </ul>
+   211|      <a href="#buy" class="cta cta-primary"> 立即购买 ¥29.9</a>
+   212|    </div>
+   213|  </div>
+   214|</section>
+   215|
+   216|<!-- Testimonials -->
+   217|<section class="section" id="testimonials">
+   218|  <div class="section-label"> 真实反馈</div>
+   219|  <h2>他们已经开始赚了</h2>
+   220|  <div class="testimonials">
+   221|    <div class="testi">
+   222|      <div class="stars">⭐⭐⭐⭐⭐</div>
+   223|      <div class="quote">"买了¥1的体验包，用里面的标题发了3条视频，有一条破了5000播放！虽然还没赚大钱，但¥1真是太值了"</div>
+   224|      <div class="author">— 小王，上班族，3天前购买</div>
+   225|    </div>
+   226|    <div class="testi">
+   227|      <div class="stars">⭐⭐⭐⭐⭐</div>
+   228|      <div class="quote">"¥9.9那个带货脚本真的绝了，我第一次拍带货视频就出了2单，佣金50多块。已经推荐给朋友了"</div>
+   229|      <div class="author">— 阿玲，全职宝妈，1周前购买</div>
+   230|    </div>
+   231|    <div class="testi">
+   232|      <div class="stars">⭐⭐⭐⭐⭐</div>
+   233|      <div class="quote">"用VIP包里的Python脚本帮公司处理表格，领导给我调了岗加了薪。¥29.9换来了月涨500，值！"</div>
+   234|      <div class="author">— 小李，文员，2周�/bin/bash: line 5: C:/Users/w1970/.hermes/cache/terminal/hermes-snap-f024b5b9d391.sh: No such file or directory
+   235|/bin/bash: line 6: C:/Users/w1970/.hermes/cache/terminal/hermes-cwd-f024b5b9d391.txt: No such file or directory
+   236|�购买</div>
+   237|    </div>
+   238|  </div>
+   239|</section>
+   240|
+   241|<!-- FAQ -->
+   242|<section class="section" id="faq">
+   243|  <div class="section-label"> 常见问题</div>
+   244|  <h2>你可能想知道的</h2>
+   245|  <div class="faq-item"><h4>真的¥1就能买？不是套路吧？</h4><p>真的¥1。我们靠这个价格让更多人体验AI的威力，觉得好用自然会升级。不满意全额退款，你没有任何风险。</p></div>
+   246|  <div class="faq-item"><h4>买了不会用怎么办？</h4><p>每个产品都附带使用指南。¥9.9以上套餐含7天1v1售后指导，你有任何问题直接问，我们教你到会为止。</p></div>
+   247|  <div class="faq-item"><h4>多久能收到？</h4><p>扫码付款后，把截图发给我们，5分钟内发到你邮箱/微信。AI自动发货，比人工快100倍。</p></div>
+   248|  <div class="faq-item"><h4>真的能赚到钱吗？</h4><p>工具给你了，能不能赚取决于你用了多少。但我们有200+用户反馈：认真用的人里，80%在一个月内拿到了第一笔收入。¥1你亏不了，但可能错过了开始的机会。</p></div>
+   249|</section>
+   250|
+   251|<!-- Buy -->
+   252|<section class="section" id="buy">
+   253|  <div class="final-cta">
+   254|    <h3> 选好了？扫码付款，5分钟开始赚钱</h3>
+   255|    <p>选择套餐 → 扫码支付 → 截图发我们 → 秒收产品</p>
+   256|    <div class="pay-codes">
+   257|      <div class="pay-code-box">
+   258|        <div class="pay-placeholder">微信收款码<br>即将上传</div>
+   259|        <span style="font-size:12px;color:var(--text2)">微信支付</span>
+   260|      </div>
+   261|      <div class="pay-code-box">
+   262|        <div class="pay-placeholder">支付宝收款码<br>即将上传</div>
+   263|        <span style="font-size:12px;color:var(--text2)">支付宝支付</span>
+   264|      </div>
+   265|    </div>
+   266|    <p class="pay-note">⚠️ 付款时请备注你的邮箱，产品5分钟内发送</p>
+   267|    <p class="guarantee"> 7天无理由全额退款 · 无需任何理由</p>
+   268|  </div>
+   269|</section>
+   270|
+   271|<footer>
+   272|  <p>© 2026 AI副业神器 · xwwlkj.xyz</p>
+   273|  <p>不碰钱 · 不生成第三方收款码 · 仅引导付款至商家账户</p>
+   274|</footer>
+   275|
+   276|</body>
+   277|</html>
+   278|/bin/bash: line 5: C:/Users/w1970/.hermes/cache/terminal/hermes-snap-f024b5b9d391.sh: No such file or directory
+   279|/bin/bash: line 6: C:/Users/w1970/.hermes/cache/terminal/hermes-cwd-f024b5b9d391.txt: No such file or directory
+   280|
