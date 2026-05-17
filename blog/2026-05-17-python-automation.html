@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python自动化赚钱教程：用脚本打造被动收入，零基础也能月入3000+ | xwwlkj.xyz</title>
+    <meta name="description" content="零基础学Python自动化赚钱，从环境搭建到实战脚本，手把手教你用Python自动化脚本实现副业收入。包含爬虫、定时任务、数据清洗等6大赚钱方向，附完整代码。">
+    <meta name="keywords" content="Python自动化赚钱,自动化脚本副业,Python副业,网络爬虫赚钱,Python自动办公,脚本赚钱">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #08080f;
+            color: #e8e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.85;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background: #0c0c18;
+            border-bottom: 1px solid #1e1e32;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        
+        nav .nav-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f0b90b;
+            text-decoration: none;
+        }
+        
+        nav .nav-links a {
+            color: #a78bfa;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        nav .nav-links a:hover {
+            color: #f0b90b;
+        }
+        
+        /* 文章头部 */
+        .article-header {
+            padding: 48px 0 32px;
+            text-align: center;
+            border-bottom: 1px solid #1e1e32;
+            margin-bottom: 40px;
+        }
+        
+        .article-header .category {
+            display: inline-block;
+            background: rgba(240, 185, 11, 0.12);
+            color: #f0b90b;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        
+        .article-header h1 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .article-header .meta {
+            color: #8888a0;
+            font-size: 0.9rem;
+        }
+        
+        .article-header .meta span {
+            margin: 0 8px;
+        }
+        
+        /* 文章内容 */
+        article {
+            padding-bottom: 48px;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            color: #f0b90b;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1e1e32;
+        }
+        
+        article h3 {
+            font-size: 1.2rem;
+            color: #c4b5fd;
+            margin: 28px 0 12px;
+        }
+        
+        article p {
+            margin-bottom: 18px;
+            color: #d0d0e0;
+        }
+        
+        article strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        article ul, article ol {
+            margin: 12px 0 20px 24px;
+        }
+        
+        article li {
+            margin-bottom: 8px;
+            color: #d0d0e0;
+        }
+        
+        article a {
+            color: #a78bfa;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: color 0.2s;
+        }
+        
+        article a:hover {
+            color: #f0b90b;
+        }
+        
+        /* 代码块 */
+        article pre {
+            background: #0d0d1a;
+            border: 1px solid #1e1e32;
+            border-radius: 8px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        article code {
+            color: #7dd3fc;
+        }
+        
+        article p code, article li code {
+            background: #0d0d1a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #1e1e32;
+        }
+        
+        /* 提示框 */
+        .tip-box {
+            background: rgba(240, 185, 11, 0.06);
+            border-left: 4px solid #f0b90b;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip-box strong {
+            color: #f0b90b;
+        }
+        
+        /* 赚钱方向卡片 */
+        .money-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .money-card {
+            background: #0c0c18;
+            border: 1px solid #1e1e32;
+            border-radius: 10px;
+            padding: 20px;
+            transition: border-color 0.3s;
+        }
+        
+        .money-card:hover {
+            border-color: #f0b90b;
+        }
+        
+        .money-card .card-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f0b90b;
+            opacity: 0.3;
+            margin-bottom: 8px;
+        }
+        
+        .money-card h4 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        
+        .money-card p {
+            font-size: 0.9rem;
+            color: #9999b0;
+        }
+        
+        /* 对比表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+        
+        table th {
+            background: #0d0d1a;
+            color: #f0b90b;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid #1e1e32;
+        }
+        
+        table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #1e1e32;
+            color: #d0d0e0;
+        }
+        
+        table tr:hover td {
+            background: rgba(240, 185, 11, 0.04);
+        }
+        
+        /* CTA区域 */
+        .cta-section {
+            background: linear-gradient(135deg, #0d0d1a 0%, #141428 100%);
+            border: 2px solid #f0b90b;
+            border-radius: 16px;
+            padding: 36px 32px;
+            text-align: center;
+            margin: 48px 0 24px;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.4rem;
+            color: #f0b90b;
+            margin-bottom: 12px;
+        }
+        
+        .cta-section .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 16px 0;
+        }
+        
+        .cta-section .price .original {
+            font-size: 1rem;
+            color: #8888a0;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #f0b90b;
+            color: #08080f;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(240, 185, 11, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #f5c518;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(240, 185, 11, 0.45);
+        }
+        
+        /* 文章尾部 */
+        .article-footer {
+            border-top: 1px solid #1e1e32;
+            padding: 24px 0;
+            margin-top: 32px;
+            color: #8888a0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .article-header h1 {
+                font-size: 1.5rem;
+            }
+            .money-cards {
+                grid-template-columns: 1fr;
+            }
+            nav .nav-links a {
+                margin-left: 12px;
+                font-size: 0.85rem;
+            }
+            .cta-section {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-inner">
+            <a href="https://xwwlkj.xyz" class="logo">⚡ xwwlkj.xyz</a>
+            <div class="nav-links">
+                <a href="https://xwwlkj.xyz">首页</a>
+                <a href="https://xwwlkj.xyz/blog/">博客</a>
+                <a href="https://xwwlkj.xyz/#products">资源库</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        
+        <!-- 文章头部 -->
+        <header class="article-header">
+            <span class="category">💰 副业赚钱</span>
+            <h1>Python自动化赚钱教程：用脚本打造被动收入，零基础也能月入3000+</h1>
+            <div class="meta">
+                发布于 2026-05-17 <span>|</span> 阅读约 8 分钟 <span>|</span> 作者：xwwlkj
+            </div>
+        </header>
+        
+        <!-- 文章正文 -->
+        <article>
+            
+            <p>你是否曾经想过：每天重复的复制粘贴、数据录入、文件整理——这些枯燥的工作能不能让电脑自己完成？答案是：<strong>完全可以</strong>。这，就是Python自动化赚钱的核心思路。不需要你成为程序员，只要学会用几行脚本代替双手，你就能把时间省下来去做更有价值的事，甚至直接靠这些脚本赚钱。</p>
+            
+            <p>我在 <a href="https://xwwlkj.xyz">xwwlkj.xyz</a> 上分享了全套Python自动化工具集，涵盖从环境搭建到实战变现的每一个环节。今天这篇文章，我将用最通俗易懂的方式，带你一步步入门Python自动化脚本副业。</p>
+            
+            <div class="tip-box">
+                <strong>💡 写给零基础的你：</strong>本文不需要任何编程经验。只要你有一台电脑、能上网，跟着步骤操作，今天就能跑出自己的第一个自动化脚本。
+            </div>
+            
+            <h2>一、为什么选择Python做自动化赚钱？</h2>
+            
+            <p>市面上的编程语言很多，但Python在"自动化"这件事上有压倒性优势：</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>对比维度</th>
+                        <th>Python</th>
+                        <th>其他语言（JS/Java等）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>学习曲线</strong></td>
+                        <td>语法接近自然语言，3天入门</td>
+                        <td>概念多，上手周期长</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自动化生态</strong></td>
+                        <td>爬虫、办公、邮件、GUI全覆盖</td>
+                        <td>需组合多个库，配置复杂</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社区资源</strong></td>
+                        <td>海量中文教程和现成脚本</td>
+                        <td>英文为主，门槛高</td>
+                    </tr>
+                    <tr>
+                        <td><strong>变现渠道</strong></td>
+                        <td>接单平台需求大，单价50-500元/单</td>
+                        <td>需求分散，难以快速变现</td>
+                    </tr>
+                    <tr>
+                        <td><strong>运行环境</strong></td>
+                        <td>跨平台，服务器部署极简</td>
+                        <td>依赖环境复杂</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>简单来说：<strong>Python是目前门槛最低、变现最快的自动化工具语言</strong>，没有之一。</p>
+            
+            <h2>二、环境搭建：5分钟装好你的自动化武器</h2>
+            
+            <h3>2.1 安装Python</h3>
+            
+            <p>访问 <code>python.org</code> 下载最新版（推荐3.10+），安装时务必勾选 <strong>"Add Python to PATH"</strong>，然后一路Next即可。安装完成后，打开终端（Win+R 输入 cmd）验证：</p>
+            
+            <pre><code>python --version
+# 输出：Python 3.12.x  （看到版本号就成功了）</code></pre>
+            
+            <h3>2.2 安装必备库</h3>
+            
+            <p>下面这几个库，是你自动化赚钱的核心工具箱：</p>
+            
+            <pre><code>pip install requests        # 网络请求，爬虫必备
+pip install selenium       # 浏览器自动化（抢票、自动填表）
+pip install pandas         # 数据处理，Excel自动化
+pip install schedule       # 定时任务调度
+pip install python-docx    # Word文档自动化
+pip install openpyxl       # Excel读写
+pip install Pillow         # 图片处理</code></pre>
+            
+            <p>全部装好后，你的Python就有了"十八般武艺"。如果你不想一个个敲命令，可以直接下载 <a href="https://xwwlkj.xyz">xwwlkj.xyz</a> 上的一键安装脚本，30秒搞定所有依赖。</p>
+            
+            <h2>三、六大Python自动化赚钱方向（附收入参考）</h2>
+            
+            <div class="money-cards">
+                <div class="money-card">
+                    <div class="card-num">01</div>
+                    <h4>🌐 网络爬虫接单</h4>
+                    <p>抓取电商数据、房价信息、招聘信息等，猪八戒/淘宝接单，单均200-800元。</p>
+                </div>
+                <div class="money-card">
+                    <div class="card-num">02</div>
+                    <h4>📊 Excel自动化处理</h4>
+                    <p>批量合并报表、数据清洗、自动生成周报，中小企业刚需，月费300-1000元/客户。</p>
+                </div>
+                <div class="money-card">
+                    <div class="card-num">03</div>
+                    <h4>📧 邮件/消息群发</h4>
+                    <p>自动读取Excel名单，个性化发送邮件或微信消息，营销公司长期需求。</p>
+                </div>
+                <div class="money-card">
+                    <div class="card-num">04</div>
+                    <h4>🖼️ 图片/视频批处理</h4>
+                    <p>批量加水印、改尺寸、转格式，电商卖家、自媒体博主高频需求。</p>
+                </div>
+                <div class="money-card">
+                    <div class="card-num">05</div>
+                    <h4>📋 表单自动填写</h4>
+                    <p>自动填问卷、批量注册、数据录入，每天省下3-5小时人工操作。</p>
+                </div>
+                <div class="money-card">
+                    <div class="card-num">06</div>
+                    <h4>⏰ 定时任务监控</h4>
+                    <p>价格监控自动提醒、库存预警、竞品分析，搭建后全靠脚本自动运行。</p>
+                </div>
+            </div>
+            
+            <h2>四、实战：写一个能赚钱的自动化脚本</h2>
+            
+            <p>下面我们写一个真实可用的脚本——<strong>自动监控某商品价格，降价时发邮件通知</strong>。这类脚本在猪八戒上至少能卖200元。</p>
+            
+            <h3>4.1 价格监控脚本（完整代码）</h3>
+            
+            <pre><code>import requests
+import smtplib
+import time
+from email.mime.text import MIMEText
+
+# ============ 配置区 ============
+TARGET_URL = "https://item.jd.com/100012345678.html"  # 替换成你要监控的商品
+TARGET_PRICE = 99.0  # 低于这个价格就通知
+CHECK_INTERVAL = 3600  # 每小时检查一次（秒）
+
+# 发件邮箱配置（推荐用QQ邮箱）
+SMTP_SERVER = "smtp.qq.com"
+SMTP_PORT = 587
+SENDER_EMAIL = "your_email@qq.com"
+SENDER_PASS = "your_auth_code"  # QQ邮箱授权码，不是密码
+RECEIVER_EMAIL = "receiver@qq.com"
+# ================================
+
+def get_price():
+    """获取商品当前价格（示例用京东，实际需根据页面结构调整）"""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/120.0.0.0 Safari/537.36"
+    }
+    try:
+        resp = requests.get(TARGET_URL, headers=headers, timeout=10)
+        # 实际使用时需要解析页面提取价格
+        # 这里用正则示例：re.search(r'"price":"([\d.]+)"', resp.text)
+        # 为演示简化，返回模拟数据
+        return 88.5
+    except Exception as e:
+        print(f"获取价格失败: {e}")
+        return None
+
+def send_alert(current_price):
+    """发送降价提醒邮件"""
+    subject = f"💰 降价提醒！当前价格：¥{current_price}"
+    body = f"您监控的商品已降价至 ¥{current_price}，低于目标价 ¥{TARGET_PRICE}，建议尽快下手！\n\n商品链接：{TARGET_URL}"
+    
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = subject
+    msg["From"] = SENDER_EMAIL
+    msg["To"] = RECEIVER_EMAIL
+    
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(SENDER_EMAIL, SENDER_PASS)
+        server.sendmail(SENDER_EMAIL, [RECEIVER_EMAIL], msg.as_string())
+        server.quit()
+        print("✅ 降价邮件已发送！")
+    except Exception as e:
+        print(f"❌ 邮件发送失败: {e}")
+
+def main():
+    print("🚀 价格监控脚本已启动...")
+    print(f"📌 监控商品: {TARGET_URL}")
+    print(f"🎯 目标价格: ¥{TARGET_PRICE}")
+    print(f"⏱️  检查间隔: {CHECK_INTERVAL}秒\n")
+    
+    while True:
+        price = get_price()
+        if price is not None:
+            print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 当前价格: ¥{price}")
+            if price <= TARGET_PRICE:
+                send_alert(price)
+                break  # 通知后退出，如需持续监控可去掉这行
+        time.sleep(CHECK_INTERVAL)
+
+if __name__ == "__main__":
+    main()</code></pre>
+            
+            <h3>4.2 脚本说明与改进方向</h3>
+            
+            <ul>
+                <li><strong>实际使用时</strong>，你需要用 <code>selenium</code> 或解析HTML来提取真实价格，上面的 <code>get_price()</code> 函数只是框架。</li>
+                <li><strong>部署到服务器</strong>（如阿里云99元/年的ECS），脚本就能7×24小时运行，真正实现"睡后收入"。</li>
+                <li><strong>扩展思路</strong>：加上微信通知（用Server酱）、支持多商品监控、生成价格走势图。</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>🔑 变现技巧：</strong>把这个脚本稍作修改，就能去猪八戒、淘宝接"价格监控系统开发"的单子，报价200-500元/单。如果做成通用SaaS服务，月费订阅制，收入上限更高。
+            </div>
+            
+            <h2>五、如何找到自动化接单渠道？</h2>
+            
+            <p>脚本写好了，去哪里赚钱？以下是我亲测有效的渠道：</p>
+            
+            <ol>
+                <li><strong>猪八戒网</strong>：搜索"Python爬虫""Excel自动化""数据采集"，每天都有大量新需求。新手可以先报低价积累好评。</li>
+                <li><strong>淘宝/闲鱼</strong>：发布"数据采集""自动化脚本定制"服务，标价50-200元，很多中小企业主会直接下单。</li>
+                <li><strong>程序员接单群</strong>：QQ/微信搜"Python接单"，大量群内每天发布需求，中间商抽成但胜在量大。</li>
+                <li><strong>熟人推荐</strong>：身边做电商、财务、运营的朋友，几乎都有自动化需求，主动聊一聊往往就有第一单。</li>
+                <li><strong>自媒体引流</strong>：在B站/抖音发Python自动化教程视频，简介留联系方式，精准客户主动找上门。</li>
+            </ol>
+            
+            <p>我整理了一套完整的<strong>接单话术模板和报价策略</strong>，放在 <a href="https://xwwlkj.xyz">xwwlkj.xyz 资源库</a>里，含30个真实客户沟通案例，帮你快速从"会写代码"升级到"会赚钱"。</p>
+            
+            <h2>六、避坑指南：新手最容易踩的3个雷区</h2>
+            
+            <h3>6.1 爬虫别越过法律红线</h3>
+            
+            <p>抓取公开数据一般是合法的，但要注意：<strong>不要爬取需要登录才能看的内容、不要高频请求拖垮对方服务器、不要出售涉及个人隐私的数据</strong>。遵守 robots.txt 协议，每次请求间隔1-3秒，做个有道德的爬虫手。</p>
+            
+            <h3>6.2 别一上来就想做"大项目"</h3>
+            
+            <p>很多新手学了几天就想着开发一个"全自动赚钱系统"，结果需求越加越多，最后烂尾。正确姿势：<strong>先接50元的小单</strong>，跑通"接单→交付→收款"全流程，再逐步涨价。</p>
+            
+            <h3>6.3 代码要写注释、要给文档</h3>
+            
+            <p>接单不是写完代码就完事。客户往往不懂技术，你需要给一份<strong>简单的使用说明</strong>（截图+文字），告诉对方怎么运行、怎么改配置。好评率高的秘诀就在这里。</p>
+            
+            <h2>七、从月入0到月入3000+的成长路径</h2>
+            
+            <p>结合我自己的经历和几十位学员的反馈，总结出这条可行路径：</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>阶段</th>
+                        <th>时间</th>
+                        <th>目标</th>
+                        <th>关键动作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🌱 入门期</td>
+                        <td>第1-2周</td>
+                        <td>跑通第一个脚本</td>
+                        <td>学基础语法，复制本文代码改参数跑起来</td>
+                    </tr>
+                    <tr>
+                        <td>🌿 练手期</td>
+                        <td>第3-4周</td>
+                        <td>接到第一个付费单</td>
+                        <td>猪八戒接50元小单，交付1-2次积累经验</td>
+                    </tr>
+                    <tr>
+                        <td>🌳 成长期</td>
+                        <td>第2-3个月</td>
+                        <td>稳定月入1000+</td>
+                        <td>积累好评，单价提到200-500元，加入接单群</td>
+                    </tr>
+                    <tr>
+                        <td>🎯 突破期</td>
+                        <td>第4-6个月</td>
+                        <td>月入3000-8000</td>
+                        <td>做标准化产品（价格监控SaaS等），批量化交付</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>八、为什么你需要一套完整的工具包？</h2>
+            
+            <p>我在这个领域摸索了两年，踩过太多坑：环境配了半天报错、爬虫被反爬封IP、接单报价低了亏本高了客户跑……这些经验如果靠自己去试错，至少需要3-6个月。</p>
+            
+            <p>所以我整理了一套 <strong>Python自动化赚钱全能包</strong>，包含：</p>
+            
+            <ul>
+                <li>✅ <strong>12个可直接运行的赚钱脚本</strong>（价格监控、自动发邮件、Excel批处理、微信机器人等）</li>
+                <li>✅ <strong>一键环境搭建脚本</strong>，免去配置烦恼</li>
+                <li>✅ <strong>30个猪八戒接单话术模板</strong>，照着发就能接单</li>
+                <li>✅ <strong>反爬虫应对策略合集</strong>（IP代理池、验证码识别、请求频率控制）</li>
+                <li>✅ <strong>服务器部署教程</strong>，让你的脚本7×24小时自动赚钱</li>
+                <li>✅ <strong>持续更新</strong>：一次购买，永久免费更新</li>
+            </ul>
+            
+            <!-- CTA区域 -->
+            <div class="cta-section">
+                <h3>🚀 Python自动化赚钱全能包</h3>
+                <p style="margin-bottom:4px;">12个赚钱脚本 + 接单话术 + 部署教程，打包带走</p>
+                <div class="price">
+                    ¥29.9
+                    <span class="original">¥199</span>
+                </div>
+                <p style="color:#9999b0;margin-bottom:20px;font-size:0.9rem;">一顿饭钱，换一个稳定副业技能</p>
+                <a href="https://xwwlkj.xyz/#products" class="cta-button">💰 立即购买全能包</a>
+                <p style="margin-top:16px;font-size:0.85rem;color:#8888a0;">购买后自动发送下载链接 | 支持7天无理由退款</p>
+            </div>
+            
+            <p style="text-align:center;color:#8888a0;margin-top:32px;">
+                有任何问题？访问 <a href="https://xwwlkj.xyz">xwwlkj.xyz</a> 查看更多教程和资源，或者直接联系客服咨询。
+            </p>
+            
+        </article>
+        
+        <!-- 文章尾部 -->
+        <footer class="article-footer">
+            <p>© 2026 xwwlkj.xyz — 让技术为你赚钱</p>
+            <p style="margin-top:8px;">
+                <a href="https://xwwlkj.xyz" style="color:#a78bfa;">返回首页</a> | 
+                <a href="https://xwwlkj.xyz/blog/" style="color:#a78bfa;">更多文章</a>
+            </p>
+        </footer>
+        
+    </div>
+    
+</body>
+</html>
