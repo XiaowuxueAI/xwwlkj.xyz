@@ -1,0 +1,392 @@
+# AI项目定制+网站搭建+API开发指导 · ¥29.9 VIP全能包
+
+> 已包含¥1入门包 + ¥9.9进阶包的全部内容 + 以下专属内容
+
+---
+
+## Python自动化脚本合集（20个实用脚本）
+
+### 1. Excel批量合并工具
+```python
+# 把文件夹里所有Excel文件合并成一个
+import pandas as pd
+import os
+from glob import glob
+
+folder = './excel_files/'  # 改成你的文件夹路径
+files = glob(folder + '*.xlsx')
+
+dfs = []
+for f in files:
+    df = pd.read_excel(f)
+    dfs.append(df)
+    print(f'已读取: {os.path.basename(f)} → {len(df)}行')
+
+result = pd.concat(dfs, ignore_index=True)
+result.to_excel('合并结果.xlsx', index=False)
+print(f'完成！共合并{len(files)}个文件，{len(result)}行数据')
+```
+
+### 2. 文件自动分类整理
+```python
+# 按文件类型自动分类到不同文件夹
+import os
+import shutil
+from pathlib import Path
+
+source = './downloads/'  # 要整理的文件夹
+rules = {
+    '图片': ['.jpg', '.png', '.gif', '.webp', '.bmp'],
+    '文档': ['.pdf', '.docx', '.txt', '.xlsx', '.pptx'],
+    '视频': ['.mp4', '.avi', '.mov', '.mkv'],
+    '压缩包': ['.zip', '.rar', '.7z', '.tar'],
+    '代码': ['.py', '.js', '.html', '.css', '.json'],
+}
+
+for file in os.listdir(source):
+    filepath = os.path.join(source, file)
+    if not os.path.isfile(filepath):
+        continue
+    ext = Path(file).suffix.lower()
+    for folder, exts in rules.items():
+        if ext in exts:
+            target = os.path.join(source, folder)
+            os.makedirs(target, exist_ok=True)
+            shutil.move(filepath, os.path.join(target, file))
+            print(f'{file} → {folder}/')
+            break
+
+print('整理完成！')
+```
+
+### 3. 网页数据爬虫
+```python
+# 爬取网页表格数据（以维基百科为例）
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+
+url = 'https://example.com/table-page'  # 替换为目标网址
+headers = {'User-Agent': 'Mozilla/5.0'}
+resp = requests.get(url, headers=headers, timeout=10)
+soup = BeautifulSoup(resp.text, 'html.parser')
+
+table = soup.find('table')  # 找到第一个表格
+df = pd.read_html(str(table))[0]
+df.to_csv('爬取结果.csv', index=False, encoding='utf-8-sig')
+print(f'成功爬取{len(df)}行数据！')
+```
+
+### 4. 微信公众号文章采集
+```python
+# 使用搜狗微信搜索采集文章
+import requests
+import time
+
+keyword = 'AI工具'  # 搜索关键词
+url = f'https://weixin.sogou.com/weixin?query={keyword}&type=2'
+
+# 需要处理反爬，建议使用selenium或第三方API
+# 此处为框架示意
+print(f'搜索关键词：{keyword}')
+print('提示：微信采集需要处理验证码，建议使用专业的采集工具')
+```
+
+### 5. PDF批量处理
+```python
+# 提取PDF中的文字内容
+import PyPDF2
+
+def extract_pdf_text(filepath):
+    with open(filepath, 'rb') as f:
+        reader = PyPDF2.PdfReader(f)
+        text = ''
+        for page in reader.pages:
+            text += page.extract_text() + '\n'
+        return text
+
+# 批量处理文件夹内所有PDF
+import os
+for file in os.listdir('./pdfs/'):
+    if file.endswith('.pdf'):
+        text = extract_pdf_text(f'./pdfs/{file}')
+        with open(f'./pdfs/{file}.txt', 'w', encoding='utf-8') as f:
+            f.write(text)
+        print(f'已提取: {file}')
+```
+
+### 6. 定时发送邮件
+```python
+# 每天定时发送邮件报告
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import schedule
+import time
+
+def send_report():
+    sender = 'your@email.com'
+    password = 'your_password'  # 建议使用应用专用密码
+    receiver = 'boss@email.com'
+
+    msg = MIMEMultipart()
+    msg['Subject'] = f'每日数据报告 - {time.strftime("%Y-%m-%d")}'
+    msg['From'] = sender
+    msg['To'] = receiver
+
+    # 这里放你的报告内容
+    body = '今日数据汇总：\n- 新增用户：128人\n- 成交订单：35单\n- 总金额：¥5,230'
+    msg.attach(MIMEText(body, 'plain', 'utf-8'))
+
+    with smtplib.SMTP_SSL('smtp.qq.com', 465) as server:
+        server.login(sender, password)
+        server.send_message(msg)
+    print(f'报告已发送！{time.strftime("%H:%M:%S")}')
+
+# 每天早上9点发送
+schedule.every().day.at('09:00').do(send_report)
+
+while True:
+    schedule.run_pending()
+    time.sleep(60)
+```
+
+### 7-20. 更多脚本索引
+7. 图片批量压缩和水印添加
+8. 视频自动剪辑（拼接+字幕+背景音乐）
+9. 微信群消息自动回复机器人
+10. 竞品价格监控（淘宝/京东比价）
+11. 天气/新闻定时推送到微信
+12. 数据库自动备份脚本
+13. 批量重命名文件（按规则）
+14. 二维码批量生成器
+15. 网页截图自动化
+16. 表单自动填写工具
+17. 财务报表自动生成
+18. 单词/知识卡片自动生成
+19. API接口调用封装模板
+20. 日志分析和告警系统
+
+> 完整脚本代码在VIP专属资源库中，购买后发送截图即可获取全部
+
+---
+
+## AI工作流搭建教程
+
+### 什么是AI工作流？
+AI工作流 = 把多个AI工具串联起来，像工厂流水线一样自动完成任务。
+
+举个例子：
+**传统方式：** 手动写文章（2小时）→ 手动排版（30分钟）→ 手动发布（15分钟）
+**AI工作流：** 输入主题 → AI写文章（5分钟）→ AI排版（1分钟）→ 自动发布（0分钟）
+
+### 搭建你的第一个AI工作流
+
+#### 场景：自动生成小红书笔记并定时发布
+
+**第一步：选工具**
+- 内容生成：DeepSeek / ChatGPT
+- 图片制作：Canva API / Midjourney
+- 自动化串联：Make.com (原Integromat) 或 n8n（自部署）
+
+**第二步：设计流程**
+```
+触发条件（每天早上9点）
+  ↓
+DeepSeek根据关键词库生成5条文案
+  ↓
+筛选最佳文案 → Canva自动生成配图
+  ↓
+保存到内容库 → 定时发布到小红书
+  ↓
+数据回传 → 生成周报
+```
+
+**第三步：技术实现（Make.com示例）**
+1. 注册 make.com（免费额度够用）
+2. 创建 Scenario，添加「Schedule」触发器
+3. 添加「OpenAI/DeepSeek」模块，配置提示词
+4. 添加「Google Sheets」模块，存储内容
+5. 添加「HTTP」模块，对接发布API
+
+**第四步：优化迭代**
+- A/B测试不同标题
+- 淘汰低互动的内容类型
+- 把爆款模式固定到流程里
+
+### 进阶：本地部署n8n（完全免费）
+```bash
+# Docker一键部署
+docker run -d --name n8n -p 5678:5678 \
+  -v n8n_data:/home/node/.n8n \
+  n8nio/n8n
+
+# 访问 http://localhost:5678 开始使用
+```
+
+---
+
+## 网站搭建完整指导
+
+### 方案一：5分钟搭建个人网站（零代码）
+
+**工具：** GitHub Pages + Jekyll 主题
+
+步骤：
+1. 注册 GitHub 账号（免费）
+2. Fork 一个 Jekyll 博客主题（如 `jekyll-now`）
+3. 改仓库名为 `你的用户名.github.io`
+4. 编辑 `_config.yml` 改标题和描述
+5. 在 `_posts` 文件夹写文章
+6. 等待1分钟，你的网站就上线了！
+
+**你的网址：** `https://你的用户名.github.io`
+
+### 方案二：AI辅助搭建商业网站
+
+**第一步：用AI生成设计方案**
+向DeepSeek描述你的需求，例如：
+> "我是一个卖手工饰品的小商家，需要一个产品展示网站。风格简约温暖，需要有首页展示、产品列表、关于我、联系方式。主色调米色+绿色。"
+
+AI会给你完整的代码。
+
+**第二步：部署到线上**
+
+使用 Vercel（免费）：
+1. 把代码上传到 GitHub
+2. 在 vercel.com 导入仓库
+3. 自动部署，获得免费域名
+
+使用 Cloudflare Pages（免费）：
+1. 同样上传到 GitHub
+2. 在 pages.cloudflare.com 连接
+3. 速度比 Vercel 更快（国内访问友好）
+
+### 方案三：微信小程序开发
+
+**快速方案：** 使用「上线了」或「有赞」等SaaS平台
+- 优点：不需要编程，拖拽即可
+- 缺点：有月费/年费
+
+**定制方案：** AI辅助开发
+1. 注册微信小程序账号（个人免费）
+2. 下载微信开发者工具
+3. 让AI生成小程序代码
+4. 在工具里预览 → 上传 → 审核 → 发布
+
+---
+
+## API开发实战教程
+
+### 什么是API？
+API就是"外卖菜单"——你不需要知道厨房怎么做菜，只需要点菜（发请求），就能拿到菜（返回数据）。
+
+### 快速上手：调用OpenAI API
+
+```python
+import openai
+
+# 1. 设置API密钥（在 platform.openai.com 获取）
+client = openai.OpenAI(api_key='sk-你的密钥')
+
+# 2. 发送请求
+response = client.chat.completions.create(
+    model='gpt-3.5-turbo',
+    messages=[
+        {'role': 'user', 'content': '用一句话介绍人工智能'}
+    ]
+)
+
+# 3. 获取结果
+print(response.choices[0].message.content)
+```
+
+### 调用DeepSeek API（更便宜！）
+
+```python
+import requests
+
+url = 'https://api.deepseek.com/v1/chat/completions'
+headers = {
+    'Authorization': 'Bearer 你的DeepSeek密钥',
+    'Content-Type': 'application/json'
+}
+data = {
+    'model': 'deepseek-chat',
+    'messages': [{'role': 'user', 'content': '你好'}]
+}
+
+response = requests.post(url, json=data, headers=headers)
+print(response.json()['choices'][0]['message']['content'])
+```
+
+### 搭建你自己的API服务
+
+```python
+# 用Flask搭建一个简单的API
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# 你的数据（这里用字典模拟）
+database = {
+    'products': [
+        {'id': 1, 'name': 'AI提示词包', 'price': 1},
+        {'id': 2, 'name': '文案模板', 'price': 9.9},
+    ]
+}
+
+# 获取产品列表
+@app.route('/api/products', methods=['GET'])
+def get_products():
+    return jsonify(database['products'])
+
+# 获取单个产品
+@app.route('/api/products/<int:id>', methods=['GET'])
+def get_product(id):
+    product = next((p for p in database['products'] if p['id'] == id), None)
+    if product:
+        return jsonify(product)
+    return jsonify({'error': 'Not found'}), 404
+
+# 新增产品
+@app.route('/api/products', methods=['POST'])
+def add_product():
+    data = request.json
+    data['id'] = len(database['products']) + 1
+    database['products'].append(data)
+    return jsonify(data), 201
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
+```
+
+运行后，访问 http://localhost:5000/api/products 即可看到你的API！
+
+### 部署到公网
+
+```bash
+# 方案1：使用 ngrok（临时公网访问）
+ngrok http 5000
+
+# 方案2：部署到 Railway / Render（免费）
+# 把代码推送到GitHub，在Railway导入即可
+
+# 方案3：部署到阿里云/腾讯云服务器
+# 适合正式项目，月费几十元起
+```
+
+---
+
+## 私人定制AI提示词（3个）
+
+购买后联系客服，描述你的具体需求，我们为你定制3个专属AI提示词。
+例如：
+- 「帮我写一个能自动生成周报的提示词，我是电商运营」
+- 「定制一个帮我分析竞品小红书账号的提示词」
+- 「我需要一个能写出爆款公众号标题的提示词」
+
+---
+
+© AI创富工具箱 · xwwlkj.xyz
+终身免费更新：产品内容持续优化，老客户永久免费获取新版本
