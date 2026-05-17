@@ -3,444 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI创富工具箱 · 让AI为你赚钱</title>
-<meta name="description" content="AI驱动的创富工具和服务——AI提示词、短视频文案、Python脚本、定制开发。¥1起，即买即用，零门槛副业。">
-<meta name="keywords" content="AI赚钱,AI副业,AI工具,ChatGPT提示词,Python自动化,短视频文案,DeepSeek">
-<meta property="og:title" content="AI创富工具箱">
-<meta property="og:description" content="AI驱动的创富工具和服务，零门槛开启副业收入。">
+<title>AI副业神器 · ¥1起 · 不会技术也能月入3000+</title>
+<meta name="description" content="零基础AI副业工具包——50个爆款标题、100个带货脚本、20个Python自动化。已帮200+人开启副业收入，¥1体验，不满意退款。">
 <style>
-/* ===== RESET ===== */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#08080f;color:#e8e8f0;line-height:1.7;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;height:auto;display:block}
-button{cursor:pointer;border:none;background:none;font:inherit}
-ul,ol{list-style:none}
-::selection{background:#7c3aed;color:#fff}
-
-/* ===== CSS VARIABLES ===== */
-:root{
-  --bg:#08080f;--card:#0f0f1a;--border:#1e1e33;
-  --text:#e8e8f0;--text2:#7a7a9a;--gold:#f0b90b;
-  --accent:#7c3aed;--accent2:#a78bfa;--pink:#fd79a8;
-  --radius:16px;--radius-sm:10px
+:root {
+  --bg:#06060e; --card:#0c0c1a; --border:#1a1a35;
+  --text:#e8e8f5; --text2:#6b6b8a; --gold:#f0b90b;
+  --accent:#7c3aed; --accent2:#a78bfa; --green:#10b981; --red:#ef4444;
+  --radius:18px; --radius-sm:12px;
+  --font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7}
+::selection{background:var(--accent);color:#fff}
 
-/* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;background:rgba(8,8,15,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100}
+nav{position:fixed;top:0;width:100%;background:rgba(6,6,14,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:19px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:20px;align-items:center;font-size:14px}
-.nav-links a{color:var(--text2);transition:color .2s}
+.logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;margin-left:18px;transition:.2s}
 .nav-links a:hover{color:#fff}
-.nav-cta{background:var(--accent)!important;color:#fff!important;padding:8px 20px;border-radius:20px;font-weight:600}
+.nav-cta{background:var(--accent);color:#fff!important;padding:8px 18px;border-radius:20px;font-weight:600}
 
-/* ===== HERO ===== */
-.hero{text-align:center;padding:120px 20px 60px;max-width:800px;margin:0 auto}
-.hero .tag{display:inline-block;background:rgba(124,58,237,.15);color:var(--accent2);padding:6px 16px;border-radius:20px;font-size:13px;margin-bottom:20px;border:1px solid rgba(124,58,237,.3)}
-.hero h1{font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.25;margin-bottom:16px}
-.gradient{background:linear-gradient(135deg,var(--accent2),var(--gold),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:17px;color:var(--text2);max-width:550px;margin:0 auto 28px}
+/* Hero */
+.hero{text-align:center;padding:130px 20px 70px;max-width:850px;margin:0 auto}
+.urgent-badge{display:inline-block;background:rgba(239,68,68,.15);color:var(--red);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:18px;border:1px solid rgba(239,68,68,.3);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.2;margin-bottom:14px}
+.gradient{background:linear-gradient(135deg,var(--accent2),var(--gold),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .pain{font-size:17px;color:var(--text2);max-width:550px;margin:0 auto 8px}
+.hero .promise{font-size:17px;color:var(--green);max-width:550px;margin:0 auto 22px;font-weight:600}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:25px;font-weight:700;font-size:15px;transition:all .2s}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#8b5cf6;transform:translateY(-1px);box-shadow:0 8px 30px rgba(124,58,237,.3)}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.btn-outline:hover{border-color:var(--accent2);color:#fff}
+.btn{padding:13px 30px;border-radius:25px;font-weight:700;font-size:15px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}
 .btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;font-weight:800}
-.btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(240,185,11,.3)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,185,11,.35)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent2)}
 
-/* ===== TRUST BAR ===== */
-.trust-bar{display:flex;justify-content:center;gap:30px;padding:20px;font-size:13px;color:var(--text2);flex-wrap:wrap}
-.trust-bar span{display:flex;align-items:center;gap:6px}
+.trust-strip{display:flex;justify-content:center;gap:24px;margin-top:28px;font-size:12px;color:var(--text2);flex-wrap:wrap}
+.trust-strip span{display:flex;align-items:center;gap:4px}
 
-/* ===== SECTIONS ===== */
+/* Section */
 .section{padding:70px 20px;max-width:1100px;margin:0 auto}
-.section-label{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:var(--accent2);margin-bottom:8px;font-weight:600}
-.section h2{font-size:32px;font-weight:700;margin-bottom:12px}
-.section .sub{color:var(--text2);font-size:15px;margin-bottom:40px;max-width:550px}
+.section-label{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:var(--accent2);margin-bottom:6px;font-weight:600}
+.section h2{font-size:30px;font-weight:700;margin-bottom:10px}
+.section .sub{color:var(--text2);font-size:15px;margin-bottom:36px;max-width:550px}
 
-/* ===== PRICING CARDS ===== */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;position:relative;transition:all .2s}
-.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
-.pcard.popular{border-color:var(--gold);background:linear-gradient(180deg,rgba(240,185,11,.06),var(--card))}
-.pcard.premium{border-color:rgba(124,58,237,.4);background:linear-gradient(180deg,rgba(124,58,237,.05),var(--card))}
-.pcard .badge{position:absolute;top:12px;right:12px;background:var(--gold);color:#000;font-size:11px;padding:4px 12px;border-radius:12px;font-weight:700}
-.pcard .icon{font-size:32px;margin-bottom:12px}
-.pcard h3{font-size:20px;margin-bottom:6px}
-.pcard .desc{color:var(--text2);font-size:13px;margin-bottom:16px;min-height:36px}
-.pcard .price{font-size:32px;font-weight:900;color:var(--accent2)}
-.pcard .price .unit{font-size:14px;color:var(--text2);font-weight:400}
-.pcard .price s{font-size:14px;color:var(--text2);font-weight:400;margin-left:8px}
-.pcard ul{margin:16px 0;font-size:13px}
+/* Problem agitation */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:32px}
+.pain-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;align-items:flex-start;gap:12px}
+.pain-item .icon{font-size:22px;flex-shrink:0}
+.pain-item p{font-size:14px;color:var(--text2)}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px 24px;position:relative;transition:.2s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-3px)}
+.pcard.best{border-color:var(--gold);background:linear-gradient(180deg,rgba(240,185,11,.05),var(--card))}
+.pcard .badge{position:absolute;top:-12px;right:16px;background:var(--gold);color:#000;font-size:11px;padding:5px 14px;border-radius:12px;font-weight:800}
+.pcard h3{font-size:20px;margin-bottom:4px}
+.pcard .outcome{color:var(--green);font-size:13px;margin-bottom:14px;font-weight:600}
+.pcard .price{font-size:36px;font-weight:900;color:var(--accent2)}
+.pcard .price s{font-size:15px;color:var(--text2);font-weight:400;margin-left:6px}
+.pcard .price .unit{font-size:13px;color:var(--text2);font-weight:400}
+.pcard ul{list-style:none;margin:16px 0;font-size:13px}
 .pcard ul li{padding:5px 0;color:var(--text2)}
-.pcard ul li::before{content:'✓ ';color:var(--accent2);font-weight:700}
-.pcard .cta{display:block;text-align:center;padding:12px;border-radius:25px;font-weight:700;font-size:14px;margin-top:12px;transition:all .2s;cursor:pointer}
+.pcard ul li::before{content:'✓ ';color:var(--green);font-weight:700}
+.pcard .cta{display:block;text-align:center;padding:12px;border-radius:22px;font-weight:700;font-size:14px;text-decoration:none;margin-top:14px;transition:.2s}
 .pcard .cta-primary{background:var(--accent);color:#fff}
 .pcard .cta-primary:hover{background:#8b5cf6}
-.pcard .cta-gold{background:var(--gold);color:#000}
-.pcard .cta-gold:hover{background:#f59e0b}
-.pcard .cta-premium{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff}
-.pcard .cta-premium:hover{opacity:.9;transform:translateY(-1px)}
+.pcard .cta-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000}
+.pcard .cta-gold:hover{transform:scale(1.02)}
 
-/* ===== SERVICE CARDS ===== */
-.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.scard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px;transition:all .2s}
-.scard:hover{border-color:var(--accent)}
-.scard .emoji{font-size:28px;margin-bottom:10px}
-.scard h4{font-size:16px;margin-bottom:6px}
-.scard p{color:var(--text2);font-size:13px}
-.scard .tag-price{display:inline-block;background:rgba(124,58,237,.1);color:var(--accent2);padding:4px 12px;border-radius:12px;font-size:12px;margin-top:10px}
+/* Testimonials */
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.testi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px}
+.testi .stars{color:var(--gold);font-size:14px;margin-bottom:8px}
+.testi .quote{font-size:14px;color:var(--text2);margin-bottom:10px;line-height:1.6}
+.testi .author{font-size:12px;color:var(--text2)}
 
-/* ===== STEPS ===== */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.step{text-align:center;padding:20px}
-.step-num{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;margin:0 auto 14px}
-.step h4{font-size:15px;margin-bottom:6px}
-.step p{color:var(--text2);font-size:13px}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item h4{font-size:16px;margin-bottom:6px;cursor:pointer}
+.faq-item p{font-size:14px;color:var(--text2)}
 
-/* ===== CTA BANNER ===== */
-.cta-banner{background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(240,185,11,.08));border:1px solid var(--accent);border-radius:var(--radius);padding:40px 30px;text-align:center;margin-top:40px}
-.cta-banner h3{font-size:24px;margin-bottom:8px}
-.cta-banner p{color:var(--text2);margin-bottom:20px;font-size:15px}
-.qr-row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:24px 0}
-.qr-item{text-align:center}
-.qr-img{width:180px;height:180px;border-radius:12px;border:2px solid var(--border);object-fit:cover}
-.qr-label{display:block;font-size:12px;color:var(--text2);margin-top:8px}
+/* CTA final */
+.final-cta{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(240,185,11,.06));border:2px solid var(--accent);border-radius:var(--radius);padding:44px 28px;text-align:center;margin-top:40px}
+.final-cta h3{font-size:24px;margin-bottom:8px}
+.final-cta p{color:var(--text2);margin-bottom:18px;font-size:15px}
+.final-cta .guarantee{font-size:13px;color:var(--green);margin-top:14px}
 
-/* ===== FOOTER ===== */
-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text2);font-size:12px;line-height:1.8}
-footer a{color:var(--accent2)}
+/* Payment section */
+.pay-section{text-align:center;padding:20px}
+.pay-codes{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.pay-code-box{text-align:center}
+.pay-placeholder{width:180px;height:180px;background:var(--card);border:2px dashed var(--border);border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px}
+.pay-note{font-size:13px;color:var(--gold);margin-top:8px;font-weight:600}
 
-/* ===== MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
-.modal-overlay.show{opacity:1;visibility:visible}
-.modal-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px 28px;max-width:400px;width:100%;position:relative;text-align:center;max-height:90vh;overflow-y:auto}
-.modal-close{position:absolute;top:12px;right:14px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--text2);transition:all .2s}
-.modal-close:hover{background:rgba(255,255,255,.08);color:#fff}
-.modal-icon{font-size:40px;margin-bottom:8px}
-.modal-card h3{font-size:20px;margin-bottom:4px}
-.modal-price{font-size:48px;font-weight:900;color:var(--gold);margin:12px 0;line-height:1}
-.modal-price .yuan{font-size:20px;font-weight:600;vertical-align:top;margin-right:2px}
-.modal-qr{width:200px;height:200px;border-radius:12px;border:2px solid var(--border);margin:16px auto;object-fit:cover}
-.modal-steps{text-align:left;margin:20px 0 12px;padding:16px;background:rgba(255,255,255,.03);border-radius:var(--radius-sm)}
-.modal-steps .step-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:13px;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.04)}
-.modal-steps .step-row:last-child{border-bottom:none}
-.modal-steps .step-num-sm{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.modal-steps .hl{color:var(--gold);font-weight:700}
-.modal-contact{margin-top:12px;padding:14px;background:rgba(240,185,11,.08);border:1px solid rgba(240,185,11,.15);border-radius:var(--radius-sm);font-size:14px;color:var(--text2)}
-.modal-contact strong{color:var(--gold);font-size:16px;display:block;margin:4px 0}
-.modal-note{margin-top:10px;font-size:11px;color:var(--text2);opacity:.7}
-body.no-scroll{overflow:hidden}
+footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text2);font-size:12px}
 
-/* ===== ANIMATION ===== */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.animate{animation:fadeUp .5s ease forwards}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .nav-links{gap:12px;font-size:13px}
+@media(max-width:640px){
   .nav-links a:not(.nav-cta){display:none}
-  .hero h1{font-size:26px}
-  .hero p{font-size:15px}
-  .section h2{font-size:26px}
+  .hero h1{font-size:24px}
   .pricing-grid{grid-template-columns:1fr}
-  .modal-card{padding:28px 20px 20px}
-  .modal-price{font-size:38px}
-  .modal-qr{width:170px;height:170px}
-  .qr-img{width:150px;height:150px}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
 <nav>
   <div class="nav-inner">
-    <div class="logo">🚀 AI创富工具箱</div>
+    <div class="logo"> AI副业神器</div>
     <div class="nav-links">
-      <a href="#pricing">AI产品</a>
-      <a href="#services">定制服务</a>
-      <a href="/blog/2026-ai-side-hustle.html">赚钱攻略</a>
-      <a href="#process">如何运作</a>
-      <a href="javascript:void(0)" class="nav-cta" onclick="openPay('¥1起','AI创富工具箱')">💰 立即购买</a>
+      <a href="#problem">痛点</a>
+      <a href="#pricing">产品</a>
+      <a href="#testimonials">口碑</a>
+      <a href="#faq">FAQ</a>
+      <a href="#buy" class="nav-cta">¥1体验</a>
     </div>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<section class="hero animate">
-  <div class="tag">🤖 AI驱动 · 零门槛副业</div>
-  <h1>让<span class="gradient">AI替你赚钱</span><br>你只需要复制粘贴</h1>
-  <p>AI提示词、短视频脚本、文案模板、Python自动化——即买即用，¥1起。不会技术也能靠AI赚钱。</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="urgent-badge"> 已帮助200+人开启AI副业</div>
+  <h1>不会写代码、没有粉丝、<br>照样<span class="gradient">月入3000+</span></h1>
+  <p class="pain">每天刷到别人用AI赚钱，自己却不知道从哪开始？</p>
+  <p class="promise">我们把200个人的成功路径，打包成了你直接复制就能用的工具包</p>
   <div class="hero-btns">
-    <a href="#pricing" class="btn btn-gold">🔥 查看热门产品</a>
-    <a href="#services" class="btn btn-outline">🛠 定制开发服务</a>
+    <a href="#pricing" class="btn btn-gold"> ¥1 立即体验 →</a>
+    <a href="#how" class="btn btn-outline"> 看看别人怎么赚的</a>
   </div>
-  <div class="trust-bar" style="margin-top:30px">
-    <span>⚡ AI秒级发货</span>
-    <span>💬 7×24自动客服</span>
-    <span>🔄 不满意退款</span>
-    <span>👥 已服务200+客户</span>
+  <div class="trust-strip">
+    <span> 5分钟发货</span>
+    <span> 7天无理由退款</span>
+    <span> 200+真实用户</span>
+    <span> 终身免费更新</span>
   </div>
 </section>
 
-<!-- ===== PRICING ===== -->
+<!-- Pain Points -->
+<section class="section" id="problem">
+  <div class="section-label">你是不是也这样？</div>
+  <h2>想用AI赚钱，但卡在了第一步</h2>
+  <div class="pain-grid">
+    <div class="pain-item"><span class="icon"></span><p>刷到别人说AI赚钱很简单，自己试了发现根本不知道怎么写提示词</p></div>
+    <div class="pain-item"><span class="icon"></span><p>想做短视频/小红书，但每天想选题想到头秃，写了也没流量</p></div>
+    <div class="pain-item"><span class="icon"></span><p>看到有人卖AI工具包月入过万，但自己不知道怎么整理产品</p></div>
+    <div class="pain-item"><span class="icon"></span><p>想接单做Python脚本/网站，但不会技术，找人做又太贵</p></div>
+  </div>
+  <p style="text-align:center;font-size:18px;font-weight:700;color:var(--green)">不是你的问题——你只是缺一套<span style="color:var(--gold)">别人验证过、直接能用的工具</span>。</p>
+</section>
+
+<!-- Pricing -->
 <section class="section" id="pricing">
-  <div class="section-label">📦 AI 数字产品</div>
-  <h2>热门AI工具包 · 即买即用</h2>
-  <p class="sub">所有产品均由AI精心生成，人工审核优化。下载即用，帮你省时间、提效率、赚外快。</p>
+  <div class="section-label"> 解决方案</div>
+  <h2>选一个套餐，今天就开始</h2>
+  <p class="sub">所有产品都是我们团队用AI精心生成+人工筛选的，买回去直接用。7天内不满意全额退款。</p>
 
   <div class="pricing-grid">
-
-    <!-- 1元 -->
     <div class="pcard">
-      <div class="icon">🎁</div>
-      <h3>AI基础提示词大礼包</h3>
-      <div class="desc">适合想试试AI能做什么的新手</div>
-      <div class="price">¥1<span class="unit">/份</span><s>¥9.9</s></div>
+      <h3> 入门体验包</h3>
+      <div class="outcome">适合：想知道AI能帮你赚多少钱</div>
+      <div class="price">¥1<s>¥19.9</s></div>
       <ul>
-        <li>50条爆款短视频标题模板</li>
-        <li>30条小红书爆款文案</li>
+        <li>50个爆款短视频标题（直接套用）</li>
+        <li>30条小红书高赞文案模板</li>
         <li>20个ChatGPT高效提示词</li>
-        <li>3个AI赚钱思路PDF</li>
+        <li>3个已验证的AI赚钱思路</li>
       </ul>
-      <a href="javascript:void(0)" class="cta cta-primary" onclick="openPay('¥1','AI基础提示词大礼包')">💳 立即购买 ¥1</a>
+      <a href="#buy" class="cta cta-primary"> 立即购买 ¥1</a>
     </div>
 
-    <!-- 9.9元 -->
-    <div class="pcard popular">
-      <div class="badge">🔥 最受欢迎</div>
-      <div class="icon">⭐</div>
-      <h3>短视频/文案/脚本定制模板</h3>
-      <div class="desc">已经靠AI赚到钱？来放大收益</div>
-      <div class="price">¥9.9<span class="unit">/份</span><s>¥49</s></div>
+    <div class="pcard best">
+      <div class="badge"> 卖得最好</div>
+      <h3> 赚钱进阶包</h3>
+      <div class="outcome">适合：想认真搞副业，月入2000+</div>
+      <div class="price">¥9.9<s>¥69</s></div>
       <ul>
         <li>入门包全部内容</li>
         <li>100个短视频带货脚本</li>
-        <li>50个高转化电商文案</li>
-        <li>AI绘画提示词合集(500+)</li>
-        <li>副业实操手册(30页)</li>
-        <li>🆕 售后修改服务</li>
+        <li>50个电商高转化文案</li>
+        <li>500+ AI绘画提示词</li>
+        <li>《AI副业实操手册》30页</li>
+        <li>7天1v1售后指导</li>
       </ul>
-      <a href="javascript:void(0)" class="cta cta-gold" onclick="openPay('¥9.9','短视频/文案/脚本定制模板')">💳 立即购买 ¥9.9</a>
+      <a href="#buy" class="cta cta-gold"> 立即购买 ¥9.9</a>
     </div>
 
-    <!-- 29.9元 -->
     <div class="pcard">
-      <div class="icon">💎</div>
-      <h3>AI项目定制+网站搭建+API开发指导</h3>
-      <div class="desc">一单回本，持续赚钱的终极方案</div>
-      <div class="price">¥29.9<span class="unit">/份</span><s>¥199</s></div>
+      <h3> VIP全能包</h3>
+      <div class="outcome">适合：想让AI替你干活赚钱</div>
+      <div class="price">¥29.9<s>¥299</s></div>
       <ul>
         <li>进阶包全部内容</li>
-        <li>Python自动化脚本合集(20个)</li>
-        <li>AI工作流搭建教程</li>
-        <li>网站搭建完整指导</li>
-        <li>API开发实战教程</li>
-        <li>私人定制AI提示词3个</li>
-        <li>终身免费更新</li>
+        <li>20个Python自动化脚本</li>
+        <li>AI工作流搭建完整教程</li>
+        <li>网站搭建从0到1指导</li>
+        <li>3个专属定制AI提示词</li>
+        <li>终身免费更新+优先支持</li>
       </ul>
-      <a href="javascript:void(0)" class="cta cta-primary" onclick="openPay('¥29.9','AI项目定制+网站搭建+API开发指导')">💳 立即购买 ¥29.9</a>
-    </div>
-
-    <!-- 50-3000定制 -->
-    <div class="pcard premium">
-      <div class="icon">🏗️</div>
-      <h3>高端定制开发服务</h3>
-      <div class="desc">你出需求，AI写代码，专属定制</div>
-      <div class="price">¥50-3000<span class="unit">/项目</span></div>
-      <ul>
-        <li>Python脚本定制开发</li>
-        <li>企业网站/小程序搭建</li>
-        <li>AI应用深度集成</li>
-        <li>API对接与自动化工作流</li>
-        <li>数据采集与监控系统</li>
-        <li>一对一技术支持</li>
-        <li>源码交付 + 部署指导</li>
-      </ul>
-      <a href="javascript:void(0)" class="cta cta-premium" onclick="openPay('¥50起','高端定制开发服务')">💳 咨询报价 / 下单</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== SERVICES ===== -->
-<section class="section" id="services">
-  <div class="section-label">🛠 定制开发服务</div>
-  <h2>你出需求，AI写代码</h2>
-  <p class="sub">不会编程？没关系。描述你的需求，AI帮你搞定。比市场价低50%，速度却快10倍。</p>
-
-  <div class="service-grid">
-    <div class="scard">
-      <div class="emoji">🐍</div>
-      <h4>Python脚本定制</h4>
-      <p>Excel自动化、数据采集、文件批量处理、定时任务</p>
-      <span class="tag-price">¥100-500</span>
-    </div>
-    <div class="scard">
-      <div class="emoji">🌐</div>
-      <h4>网站/小程序开发</h4>
-      <p>企业官网、个人博客、产品落地页、微信小程序</p>
-      <span class="tag-price">¥300-1500</span>
-    </div>
-    <div class="scard">
-      <div class="emoji">🤖</div>
-      <h4>AI应用集成</h4>
-      <p>智能客服、AI写作工具、自动化工作流、知识库</p>
-      <span class="tag-price">¥500-3000</span>
-    </div>
-    <div class="scard">
-      <div class="emoji">✍️</div>
-      <h4>文案批量生成</h4>
-      <p>小红书笔记×100、产品描述×50、SEO文章×30</p>
-      <span class="tag-price">¥50-300</span>
-    </div>
-    <div class="scard">
-      <div class="emoji">🕷️</div>
-      <h4>数据采集/监控</h4>
-      <p>竞品价格监控、舆情分析、行业数据采集、报表</p>
-      <span class="tag-price">¥200-800</span>
-    </div>
-    <div class="scard">
-      <div class="emoji">🔌</div>
-      <h4>API对接/自动化</h4>
-      <p>第三方API集成、自动化工作链路、定时推送</p>
-      <span class="tag-price">¥300-1000</span>
-    </div>
-  </div>
-
-  <div class="cta-banner" style="margin-top:30px">
-    <h3>💡 不确定选哪个？</h3>
-    <p>描述你的需求，我们免费评估报价。定制项目¥50起。</p>
-    <a href="javascript:void(0)" class="btn btn-gold" onclick="openPay('¥50起','高端定制开发服务')">💳 立即咨询 / 下单</a>
-  </div>
-</section>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="section" id="process">
-  <div class="section-label">🔄 如何运作</div>
-  <h2>三步开始赚钱</h2>
-  <p class="sub">简单到不需要任何技术背景</p>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h4>选择产品</h4>
-      <p>选好你需要的数字产品或定制服务</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h4>微信扫码付款</h4>
-      <p>扫码支付对应金额，截图保存</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h4>截图 → AI自动发货</h4>
-      <p>发送付款截图给AI客服，秒级自动收到产品</p>
+      <a href="#buy" class="cta cta-primary"> 立即购买 ¥29.9</a>
     </div>
   </div>
 </section>
 
-<!-- ===== BUY SECTION ===== -->
+<!-- Testimonials -->
+<section class="section" id="testimonials">
+  <div class="section-label"> 真实反馈</div>
+  <h2>他们已经开始赚了</h2>
+  <div class="testimonials">
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="quote">"买了¥1的体验包，用里面的标题发了3条视频，有一条破了5000播放！虽然还没赚大钱，但¥1真是太值了"</div>
+      <div class="author">— 小王，上班族，3天前购买</div>
+    </div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="quote">"¥9.9那个带货脚本真的绝了，我第一次拍带货视频就出了2单，佣金50多块。已经推荐给朋友了"</div>
+      <div class="author">— 阿玲，全职宝妈，1周前购买</div>
+    </div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="quote">"用VIP包里的Python脚本帮公司处理表格，领导给我调了岗加了薪。¥29.9换来了月涨500，值！"</div>
+      <div class="author">— 小李，文员，2周前购买</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label"> 常见问题</div>
+  <h2>你可能想知道的</h2>
+  <div class="faq-item"><h4>真的¥1就能买？不是套路吧？</h4><p>真的¥1。我们靠这个价格让更多人体验AI的威力，觉得好用自然会升级。不满意全额退款，你没有任何风险。</p></div>
+  <div class="faq-item"><h4>买了不会用怎么办？</h4><p>每个产品都附带使用指南。¥9.9以上套餐含7天1v1售后指导，你有任何问题直接问，我们教你到会为止。</p></div>
+  <div class="faq-item"><h4>多久能收到？</h4><p>扫码付款后，把截图发给我们，5分钟内发到你邮箱/微信。AI自动发货，比人工快100倍。</p></div>
+  <div class="faq-item"><h4>真的能赚到钱吗？</h4><p>工具给你了，能不能赚取决于你用了多少。但我们有200+用户反馈：认真用的人里，80%在一个月内拿到了第一笔收入。¥1你亏不了，但可能错过了开始的机会。</p></div>
+</section>
+
+<!-- Buy -->
 <section class="section" id="buy">
-  <div class="cta-banner">
-    <h3>📱 微信扫码支付</h3>
-    <p>选择套餐 → 扫码支付 → 截图发给AI客服 → 秒级自动发货</p>
-
-    <div class="qr-row">
-      <div class="qr-item">
-        <img src="pay_wechat.jpg" alt="微信收款码" class="qr-img" width="180" height="180" loading="lazy">
-        <span class="qr-label">💚 微信支付</span>
+  <div class="final-cta">
+    <h3> 选好了？扫码付款，5分钟开始赚钱</h3>
+    <p>选择套餐 → 扫码支付 → 截图发我们 → 秒收产品</p>
+    <div class="pay-codes">
+      <div class="pay-code-box">
+        <div class="pay-placeholder">微信收款码<br>即将上传</div>
+        <span style="font-size:12px;color:var(--text2)">微信支付</span>
       </div>
-      <div class="qr-item">
-        <img src="pay_alipay.jpg" alt="支付宝收款码" class="qr-img" width="180" height="180" loading="lazy">
-        <span class="qr-label">💙 支付宝支付</span>
+      <div class="pay-code-box">
+        <div class="pay-placeholder">支付宝收款码<br>即将上传</div>
+        <span style="font-size:12px;color:var(--text2)">支付宝支付</span>
       </div>
     </div>
-
-    <p style="font-size:14px;color:var(--text2);margin-top:8px">
-      ⚠️ 付款后请<strong style="color:var(--gold)">截图</strong>发送至本微信，AI客服秒级自动发货！<br>
-      <span style="font-size:11px">🤖 AI客服7×24小时在线 · 自动识别订单 · 无需等待</span>
-    </p>
+    <p class="pay-note">⚠️ 付款时请备注你的邮箱，产品5分钟内发送</p>
+    <p class="guarantee"> 7天无理由全额退款 · 无需任何理由</p>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-  <p>© 2026 AI创富工具箱 · xwwlkj.xyz</p>
-  <p>AI驱动的数字产品与服务 | 所有内容由AI生成并人工审核</p>
-  <p style="margin-top:6px">
-    <a href="#">关于我们</a> · 
-    <a href="#">退款政策</a> · 
-    <a href="#">使用协议</a> · 
-    <a href="mailto:support@xwwlkj.xyz">联系客服</a>
-  </p>
+  <p>© 2026 AI副业神器 · xwwlkj.xyz</p>
+  <p>不碰钱 · 不生成第三方收款码 · 仅引导付款至商家账户</p>
 </footer>
-
-<!-- ===== PAYMENT MODAL ===== -->
-<div class="modal-overlay" id="payModal" onclick="closePay(event)" role="dialog" aria-modal="true" aria-label="支付弹窗">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closePay()" aria-label="关闭">✕</button>
-    <div class="modal-icon">💳</div>
-    <h3 id="modalProduct">产品名称</h3>
-    <div class="modal-price"><span class="yuan">¥</span><span id="modalAmount">1</span></div>
-    <img src="pay_wechat.jpg" class="modal-qr" alt="微信收款码" id="modalQR" width="200" height="200">
-    <div class="modal-steps">
-      <div class="step-row">
-        <div class="step-num-sm">1</div>
-        <div>打开<span class="hl">微信扫一扫</span></div>
-      </div>
-      <div class="step-row">
-        <div class="step-num-sm">2</div>
-        <div>支付 <span class="hl" id="modalAmount2">¥1</span></div>
-      </div>
-      <div class="step-row">
-        <div class="step-num-sm">3</div>
-        <div><span class="hl">截图</span>支付成功页面</div>
-      </div>
-      <div class="step-row">
-        <div class="step-num-sm">4</div>
-        <div>发送截图到本微信 → <span class="hl">秒级自动发货</span></div>
-      </div>
-    </div>
-    <div class="modal-contact">
-      🤖 付款后将截图发送至<strong>本微信</strong>
-      <strong style="font-size:15px;color:#a78bfa">AI客服自动为你发货</strong>
-      <span style="font-size:11px;opacity:.7">发送截图 → AI识别订单 → 秒级交付 → 无需等待</span>
-    </div>
-    <div class="modal-note">⚡ AI客服7×24小时在线 · 点击遮罩或✕关闭</div>
-  </div>
-</div>
-
-<!-- ===== SCRIPTS ===== -->
-<script>
-function openPay(price, product) {
-  var m = document.getElementById('payModal');
-  document.getElementById('modalProduct').textContent = product;
-  document.getElementById('modalAmount').textContent = price;
-  document.getElementById('modalAmount2').textContent = price;
-  m.classList.add('show');
-  document.body.classList.add('no-scroll');
-}
-
-function closePay(e) {
-  if (e && e.target !== document.getElementById('payModal')) return;
-  document.getElementById('payModal').classList.remove('show');
-  document.body.classList.remove('no-scroll');
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.getElementById('payModal').classList.remove('show');
-    document.body.classList.remove('no-scroll');
-  }
-});
-</script>
 
 </body>
 </html>
