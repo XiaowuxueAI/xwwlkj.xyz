@@ -114,6 +114,75 @@ footer a{color:var(--accent2)}
 .modal-note{margin-top:10px;font-size:11px;color:var(--text2);opacity:.7}
 body.no-scroll{overflow:hidden}
 
+/* ── 聊天挂件 ── */
+.chat-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;font-size:26px;z-index:999;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(124,58,237,.4);transition:all .2s;border:none;outline:none}
+.chat-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(124,58,237,.5)}
+.chat-btn .badge-dot{position:absolute;top:4px;right:5px;width:10px;height:10px;background:#4ade80;border-radius:50%;border:2px solid var(--bg)}
+.chat-widget{position:fixed;bottom:90px;right:24px;width:360px;max-width:calc(100vw - 40px);height:480px;max-height:calc(100vh - 140px);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.chat-widget.open{display:flex}
+.chat-header{background:var(--accent);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;color:#fff}
+.chat-header .title{font-weight:700;font-size:15px}
+.chat-header .status{font-size:11px;opacity:.85;display:flex;align-items:center;gap:4px}
+.chat-header .status::before{content:'';width:8px;height:8px;background:#4ade80;border-radius:50%}
+.chat-header .close-chat{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;transition:.2s;border:none;background:rgba(255,255,255,.1);color:#fff}
+.chat-header .close-chat:hover{background:rgba(255,255,255,.2)}
+.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.chat-body .msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.55;word-break:break-word;animation:fadeUp .25s ease}
+.chat-body .msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.chat-body .msg.ai{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border);border-bottom-left-radius:4px;white-space:pre-line}
+.chat-body .msg .time{font-size:10px;opacity:.5;margin-top:4px;text-align:right}
+.chat-body .typing{align-self:flex-start;padding:10px 14px;font-size:13px;color:var(--text2);display:flex;gap:4px}
+.chat-body .typing span{width:6px;height:6px;background:var(--text2);border-radius:50%;animation:bounce .6s infinite}
+.chat-body .typing span:nth-child(2){animation-delay:.15s}
+.chat-body .typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+.chat-footer{padding:12px;border-top:1px solid var(--border);display:flex;gap:8px}
+.chat-footer input{flex:1;padding:10px 14px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:#fff;font-size:13px;outline:none;transition:.2s}
+.chat-footer input:focus{border-color:var(--accent)}
+.chat-footer button{padding:10px 16px;border-radius:20px;background:var(--accent);color:#fff;font-weight:600;font-size:13px;border:none;cursor:pointer;transition:.2s;white-space:nowrap}
+.chat-footer button:hover{background:#8b5cf6}
+.chat-footer button:disabled{opacity:.5;cursor:not-allowed}
+
+/* ── 下单表单弹窗 ── */
+.order-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:1100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.25s}
+.order-modal-overlay.show{opacity:1;visibility:visible}
+.order-modal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 24px;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.order-modal h3{font-size:20px;margin-bottom:6px}
+.order-modal .sub{color:var(--text2);font-size:13px;margin-bottom:20px}
+.order-modal label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px;color:var(--text2)}
+.order-modal input,.order-modal select,.order-modal textarea{width:100%;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:rgba(255,255,255,.03);color:#fff;font-size:14px;font-family:inherit;outline:none;transition:.2s;resize:vertical}
+.order-modal input:focus,.order-modal select:focus,.order-modal textarea:focus{border-color:var(--accent)}
+.order-modal textarea{min-height:80px}
+.order-modal .btn-submit{width:100%;padding:14px;margin-top:20px;border-radius:25px;font-weight:700;font-size:15px;background:var(--accent);color:#fff;border:none;cursor:pointer;transition:.2s}
+.order-modal .btn-submit:hover{background:#8b5cf6}
+.order-modal .btn-submit:disabled{opacity:.5}
+.order-success{text-align:center;padding:20px;display:none}
+.order-success .check{font-size:48px;margin-bottom:12px}
+.order-success h4{font-size:18px;margin-bottom:6px;color:var(--gold)}
+.order-success p{color:var(--text2);font-size:13px;margin-bottom:8px}
+
+/* ── 案例区 ── */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:.2s}
+.case-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.case-card .case-stats{display:flex;gap:20px;margin:16px 0;font-size:13px}
+.case-card .case-stat .val{font-size:22px;font-weight:800;color:var(--accent2)}
+.case-card .case-stat .lbl{color:var(--text2);font-size:11px}
+.case-card .case-tag{display:inline-block;background:rgba(240,185,11,.12);color:var(--gold);padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600}
+.case-placeholder{text-align:center;padding:40px;color:var(--text2);font-size:14px;grid-column:1/-1}
+
+/* ── 页脚微信 ── */
+.footer-wechat{display:flex;align-items:center;justify-content:center;gap:20px;margin:16px 0;padding:16px;background:rgba(240,185,11,.06);border-radius:var(--radius-sm);flex-wrap:wrap}
+.footer-wechat img{width:100px;height:100px;border-radius:10px;border:2px solid var(--gold)}
+.footer-wechat .wx-text{text-align:left;font-size:13px}
+.footer-wechat .wx-text strong{color:var(--gold);font-size:16px;display:block;margin-bottom:4px}
+.footer-wechat .wx-text .urgent{color:var(--pink);font-weight:700;font-size:14px}
+
+@media(max-width:768px){
+  .chat-widget{width:calc(100vw - 32px);right:16px;bottom:80px;height:420px}
+  .footer-wechat{flex-direction:column;text-align:center}
+  .footer-wechat .wx-text{text-align:center}}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .animate{animation:fadeUp .5s ease forwards}
 
@@ -183,6 +252,7 @@ body.no-scroll{overflow:hidden}
         <li>3个AI赚钱思路PDF</li>
       </ul>
       <a href="javascript:void(0)" class="cta cta-primary" onclick="openPay('¥1','AI基础提示词大礼包')">💳 立即购买 ¥1</a>
+      <a href="javascript:void(0)" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text2);text-decoration:underline" onclick="openOrder('AI基础提示词大礼包 ¥1')">📋 或填写表单下单 →</a>
     </div>
 
     <div class="pcard popular">
@@ -200,6 +270,7 @@ body.no-scroll{overflow:hidden}
         <li>🆕 售后修改服务</li>
       </ul>
       <a href="javascript:void(0)" class="cta cta-gold" onclick="openPay('¥9.9','短视频/文案/脚本定制模板')">💳 立即购买 ¥9.9</a>
+      <a href="javascript:void(0)" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text2);text-decoration:underline" onclick="openOrder('短视频/文案/脚本定制模板 ¥9.9')">📋 或填写表单下单 →</a>
     </div>
 
     <div class="pcard">
@@ -217,6 +288,7 @@ body.no-scroll{overflow:hidden}
         <li>终身免费更新</li>
       </ul>
       <a href="javascript:void(0)" class="cta cta-primary" onclick="openPay('¥29.9','AI项目定制+网站搭建+API开发指导')">💳 立即购买 ¥29.9</a>
+      <a href="javascript:void(0)" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text2);text-decoration:underline" onclick="openOrder('AI项目定制+网站搭建+API开发指导 ¥29.9')">📋 或填写表单下单 →</a>
     </div>
 
     <div class="pcard premium">
@@ -234,6 +306,7 @@ body.no-scroll{overflow:hidden}
         <li>源码交付 + 部署指导</li>
       </ul>
       <a href="javascript:void(0)" class="cta cta-premium" onclick="openPay('¥50起','高端定制开发服务')">💳 咨询报价 / 下单</a>
+      <a href="javascript:void(0)" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text2);text-decoration:underline" onclick="openOrder('高端定制开发服务 ¥50-3000')">📋 或填写表单下单 →</a>
     </div>
   </div>
 </section>
@@ -294,6 +367,14 @@ body.no-scroll{overflow:hidden}
 <footer>
   <p>© 2026 AI创富工具箱 · xwwlkj.xyz</p>
   <p>AI驱动的数字产品与服务 | 所有内容由AI生成并人工审核</p>
+  <div class="footer-wechat">
+    <img src="wechat_qr.jpg" alt="微信客服二维码" width="100" height="100" loading="lazy">
+    <div class="wx-text">
+      <strong>📱 客服微信</strong>
+      扫码添加 · 急单/定制优先处理
+      <div class="urgent">🔥 急单/定制加微信，5分钟响应！</div>
+    </div>
+  </div>
   <p style="margin-top:6px">
     <a href="#">关于我们</a> · 
     <a href="#">退款政策</a> · 
@@ -344,6 +425,255 @@ document.addEventListener('keydown', function(e) {
     document.body.classList.remove('no-scroll');
   }
 });
+</script>
+
+<!-- ═══════════ 案例展示区 ═══════════ -->
+<section class="section" id="cases" style="padding-top:50px">
+  <div class="section-label">📊 真实案例</div>
+  <h2>他们用AI赚到了</h2>
+  <p class="sub">真实用户反馈 · 持续更新中。欢迎投稿你的AI赚钱故事。</p>
+  <div class="cases-grid">
+    <!-- 案例将在这里补充 -->
+    <div class="case-placeholder">
+      <div style="font-size:48px;margin-bottom:12px">✨</div>
+      客户案例即将上线<br>
+      <span style="opacity:.5">我们正在收集真实用户反馈，敬请期待～</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 聊天挂件 ═══════════ -->
+<button class="chat-btn" id="chatBtn" onclick="toggleChat()" aria-label="打开客服聊天">
+  💬<span class="badge-dot"></span>
+</button>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header">
+    <div>
+      <div class="title">🤖 AI客服小助手</div>
+      <div class="status">在线 · 秒级回复</div>
+    </div>
+    <button class="close-chat" onclick="toggleChat()" aria-label="关闭">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg ai">您好！👋 欢迎来到<strong>AI创富工具箱</strong>！<br><br>我可以帮您解答：<br>💰 产品价格和内容<br>📦 交付时间和方式<br>🛒 如何购买付款<br>🔧 定制开发服务<br><br>直接问我吧～</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="输入你的问题..." onkeydown="if(event.key==='Enter') sendChat()" autocomplete="off">
+    <button onclick="sendChat()" id="chatSendBtn">发送</button>
+  </div>
+</div>
+
+<!-- ═══════════ 下单表单弹窗 ═══════════ -->
+<div class="order-modal-overlay" id="orderModal" onclick="closeOrder(event)">
+  <div class="order-modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOrder()" aria-label="关闭" style="position:absolute;top:12px;right:14px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--text2);border:none;background:transparent;cursor:pointer">✕</button>
+
+    <!-- 表单状态 -->
+    <div id="orderFormView">
+      <h3>📋 提交订单</h3>
+      <p class="sub">填写以下信息，我们会尽快联系你。</p>
+      <input type="hidden" id="orderProduct" value="">
+
+      <label>选择产品</label>
+      <select id="orderProductSelect" onchange="document.getElementById('orderProduct').value=this.value">
+        <option value="">-- 请选择 --</option>
+        <option value="AI基础提示词大礼包 ¥1">AI基础提示词大礼包 ¥1</option>
+        <option value="短视频/文案/脚本定制模板 ¥9.9">短视频/文案/脚本定制模板 ¥9.9</option>
+        <option value="AI项目定制+网站搭建+API开发指导 ¥29.9">AI项目定制+网站搭建+API开发指导 ¥29.9</option>
+        <option value="高端定制开发服务 ¥50-3000">高端定制开发服务 ¥50-3000</option>
+      </select>
+
+      <label>需求描述 *</label>
+      <textarea id="orderDesc" placeholder="请描述你的需求，越详细越好..."></textarea>
+
+      <label>微信号 / 邮箱 *</label>
+      <input type="text" id="orderContact" placeholder="请留下微信号或邮箱，方便联系你">
+
+      <button class="btn-submit" onclick="submitOrder()" id="orderSubmitBtn">✅ 提交订单</button>
+    </div>
+
+    <!-- 成功状态 -->
+    <div class="order-success" id="orderSuccessView">
+      <div class="check">✅</div>
+      <h4>订单已提交！</h4>
+      <p>状态：<span style="color:var(--gold);font-weight:700">待处理</span></p>
+      <p style="margin-bottom:16px">我们会尽快联系你。<br>急单请直接加微信，5分钟响应。</p>
+      <div style="text-align:center;margin-bottom:12px">
+        <img src="wechat_qr.jpg" alt="微信" style="width:120px;height:120px;border-radius:10px;border:2px solid var(--gold);margin:0 auto">
+        <p style="font-size:11px;color:var(--text2);margin-top:4px">急单加微信 ↑</p>
+      </div>
+      <button class="btn-submit" onclick="closeOrder()" style="background:var(--text2)">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════ 配置 ═══════════
+// 部署时改为你的后端地址 (localtunnel URL)
+var API_BASE = 'https://xwwlkj-api.loca.lt';
+var SESSION_ID = 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
+
+// ═══════════ 聊天 ═══════════
+function toggleChat() {
+  var w = document.getElementById('chatWidget');
+  w.classList.toggle('open');
+  if (w.classList.contains('open')) {
+    document.getElementById('chatInput').focus();
+  }
+}
+
+function addMsg(role, text) {
+  var body = document.getElementById('chatBody');
+  var div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.innerHTML = text + '<div class="time">' + new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}) + '</div>';
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function showTyping() {
+  var body = document.getElementById('chatBody');
+  var div = document.createElement('div');
+  div.className = 'typing';
+  div.id = 'typingIndicator';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function hideTyping() {
+  var el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+function sendChat() {
+  var input = document.getElementById('chatInput');
+  var btn = document.getElementById('chatSendBtn');
+  var msg = input.value.trim();
+  if (!msg) return;
+
+  addMsg('user', msg);
+  input.value = '';
+  input.disabled = true;
+  btn.disabled = true;
+  showTyping();
+
+  fetch(API_BASE + '/api/chat', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({session_id: SESSION_ID, message: msg})
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    hideTyping();
+    addMsg('ai', data.reply);
+    if (data.status === 'transfer') {
+      // 转人工提示
+      setTimeout(function() {
+        addMsg('ai', '💡 <strong>小提示：</strong>你也可以直接扫描页面底部二维码添加微信，回复更快哦～');
+      }, 1500);
+    }
+    input.disabled = false;
+    btn.disabled = false;
+    input.focus();
+  })
+  .catch(function(e) {
+    hideTyping();
+    addMsg('ai', '😅 抱歉，连接后端服务失败。\\n\\n请直接扫描页面底部微信二维码联系客服，5分钟响应！');
+    input.disabled = false;
+    btn.disabled = false;
+  });
+}
+
+// 初始自动打开聊天（延迟3秒后显示按钮提示）
+setTimeout(function() {
+  var btn = document.getElementById('chatBtn');
+  if (btn) btn.style.animation = 'fadeUp .5s ease';
+}, 3000);
+
+// ═══════════ 下单 ═══════════
+function openOrder(product) {
+  var m = document.getElementById('orderModal');
+  document.getElementById('orderProduct').value = product || '';
+  var sel = document.getElementById('orderProductSelect');
+  if (product) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value.indexOf(product) === 0) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  }
+  // 重置
+  document.getElementById('orderDesc').value = '';
+  document.getElementById('orderContact').value = '';
+  document.getElementById('orderFormView').style.display = 'block';
+  document.getElementById('orderSuccessView').style.display = 'none';
+  document.getElementById('orderSubmitBtn').disabled = false;
+  m.classList.add('show');
+  document.body.classList.add('no-scroll');
+}
+
+function closeOrder(e) {
+  if (e && e.target !== document.getElementById('orderModal')) return;
+  document.getElementById('orderModal').classList.remove('show');
+  document.body.classList.remove('no-scroll');
+}
+
+function submitOrder() {
+  var product = document.getElementById('orderProduct').value || document.getElementById('orderProductSelect').value;
+  var desc = document.getElementById('orderDesc').value.trim();
+  var contact = document.getElementById('orderContact').value.trim();
+
+  if (!product) { alert('请选择产品'); return; }
+  if (!desc) { alert('请填写需求描述'); return; }
+  if (!contact) { alert('请填写微信号或邮箱'); return; }
+
+  var btn = document.getElementById('orderSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = '提交中...';
+
+  fetch(API_BASE + '/api/orders', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({product: product, description: desc, contact: contact})
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.success) {
+      document.getElementById('orderFormView').style.display = 'none';
+      document.getElementById('orderSuccessView').style.display = 'block';
+    } else {
+      alert('提交失败：' + (data.error || '未知错误'));
+      btn.disabled = false;
+      btn.textContent = '✅ 提交订单';
+    }
+  })
+  .catch(function(e) {
+    alert('网络错误，请稍后重试。或直接加微信下单，5分钟响应！');
+    btn.disabled = false;
+    btn.textContent = '✅ 提交订单';
+  });
+}
+
+// ═══════════ 键盘快捷键 ═══════════
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('payModal').classList.remove('show');
+
+    // Also close order modal
+    document.getElementById('orderModal').classList.remove('show');
+    document.body.classList.remove('no-scroll');
+  }
+});
+
+// ═══════════ 重写 openPay，增加下单选项 ═══════════
+var _originalOpenPay = openPay;
+openPay = function(price, product) {
+  // 先用原来的弹窗
+  _originalOpenPay(price, product);
+};
 </script>
 </body>
 </html>
